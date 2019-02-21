@@ -457,7 +457,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(上)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(二)-基本图元绘制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -476,7 +476,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(上)/" itemprop="url">OpenGL(七)-纹理(上)</a></h1>
+                <a class="post-title-link" href="/2019/02/20/OpenGL(二)-基本图元绘制/" itemprop="url">OpenGL(二)-基本图元绘制</a></h1>
         
 
         <div class="post-meta">
@@ -549,17 +549,17 @@
 
       
         
-          <h3 id="设定金字塔坐标"><a href="#设定金字塔坐标" class="headerlink" title="设定金字塔坐标"></a>设定金字塔坐标</h3><p><img src="https://upload-images.jianshu.io/upload_images/1352344-a2e064a191fa1a72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="金字塔.png"><br><strong>注意纹理坐标的设置方式:</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置顶点对应的纹理坐标</span></span><br><span class="line"><span class="comment">// s , t 相当于 x , y</span></span><br><span class="line"><span class="comment">// MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);</span></span><br><span class="line"><span class="comment">//参数1:纹理的层次</span></span><br><span class="line"><span class="comment">//参数2:s坐标</span></span><br><span class="line"><span class="comment">//参数3:t坐标</span></span><br><span class="line">pyramidBatch.MultiTexCoord2f(<span class="number">0</span>, <span class="number">0.0</span>f, <span class="number">0.0</span>f);</span><br></pre></td></tr></table></figure></p>
+          <h2 id="OpenGL与着色器"><a href="#OpenGL与着色器" class="headerlink" title="OpenGL与着色器"></a>OpenGL与着色器</h2><p>在OpenGL 3.0之前，OpenGL包含一个固定功能的管线，它可以在不使用着色器的情况下处理几何与像素数据。从3.1版本开始，固定管线从核心模式去掉。因此现在需要使用着色器来完成工作.<br>我们会使用GLSL,(OpenGL Shading Language，它是在OpenGL 2.0版本发布的)。 语法与“C、C++”类似。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/20/OpenGL(七)-纹理(上)/#more" rel="contents">
+            <a class="btn" href="/2019/02/20/OpenGL(二)-基本图元绘制/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -750,7 +750,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(下)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -769,7 +769,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(下)/" itemprop="url">OpenGL(七)-纹理(下)</a></h1>
+                <a class="post-title-link" href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/" itemprop="url">OpenGL(四)-两种方式实现抗锯齿效果</a></h1>
         
 
         <div class="post-meta">
@@ -842,10 +842,10 @@
 
       
         
-          <h2 id="绘制一个隧道"><a href="#绘制一个隧道" class="headerlink" title="绘制一个隧道"></a>绘制一个隧道</h2>
+          <h2 id="方式一-利用混合-GLBlend-实现抗锯齿"><a href="#方式一-利用混合-GLBlend-实现抗锯齿" class="headerlink" title="方式一 : 利用混合(GLBlend)实现抗锯齿"></a>方式一 : 利用混合(GLBlend)实现抗锯齿</h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/20/OpenGL(七)-纹理(下)/#more" rel="contents">
+            <a class="btn" href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1191,7 +1191,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(二)-基本图元绘制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(上)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -1210,7 +1210,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/20/OpenGL(二)-基本图元绘制/" itemprop="url">OpenGL(二)-基本图元绘制</a></h1>
+                <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(上)/" itemprop="url">OpenGL(七)-纹理(上)</a></h1>
         
 
         <div class="post-meta">
@@ -1283,17 +1283,17 @@
 
       
         
-          <h2 id="OpenGL与着色器"><a href="#OpenGL与着色器" class="headerlink" title="OpenGL与着色器"></a>OpenGL与着色器</h2><p>在OpenGL 3.0之前，OpenGL包含一个固定功能的管线，它可以在不使用着色器的情况下处理几何与像素数据。从3.1版本开始，固定管线从核心模式去掉。因此现在需要使用着色器来完成工作.<br>我们会使用GLSL,(OpenGL Shading Language，它是在OpenGL 2.0版本发布的)。 语法与“C、C++”类似。<br>
+          <h3 id="设定金字塔坐标"><a href="#设定金字塔坐标" class="headerlink" title="设定金字塔坐标"></a>设定金字塔坐标</h3><p><img src="https://upload-images.jianshu.io/upload_images/1352344-a2e064a191fa1a72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="金字塔.png"><br><strong>注意纹理坐标的设置方式:</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置顶点对应的纹理坐标</span></span><br><span class="line"><span class="comment">// s , t 相当于 x , y</span></span><br><span class="line"><span class="comment">// MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);</span></span><br><span class="line"><span class="comment">//参数1:纹理的层次</span></span><br><span class="line"><span class="comment">//参数2:s坐标</span></span><br><span class="line"><span class="comment">//参数3:t坐标</span></span><br><span class="line">pyramidBatch.MultiTexCoord2f(<span class="number">0</span>, <span class="number">0.0</span>f, <span class="number">0.0</span>f);</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/20/OpenGL(二)-基本图元绘制/#more" rel="contents">
+            <a class="btn" href="/2019/02/20/OpenGL(七)-纹理(上)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
     
     
     
@@ -1337,7 +1337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(下)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -1356,7 +1356,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/" itemprop="url">OpenGL(四)-两种方式实现抗锯齿效果</a></h1>
+                <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(下)/" itemprop="url">OpenGL(七)-纹理(下)</a></h1>
         
 
         <div class="post-meta">
@@ -1429,10 +1429,10 @@
 
       
         
-          <h2 id="方式一-利用混合-GLBlend-实现抗锯齿"><a href="#方式一-利用混合-GLBlend-实现抗锯齿" class="headerlink" title="方式一 : 利用混合(GLBlend)实现抗锯齿"></a>方式一 : 利用混合(GLBlend)实现抗锯齿</h2>
+          <h2 id="绘制一个隧道"><a href="#绘制一个隧道" class="headerlink" title="绘制一个隧道"></a>绘制一个隧道</h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/#more" rel="contents">
+            <a class="btn" href="/2019/02/20/OpenGL(七)-纹理(下)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
