@@ -86,20 +86,20 @@
 
 
 
-<meta name="description" content="##什么叫深度?所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.观察者可以在任何位置.OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区. ##深度缓冲区作用?一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.深度测试就是用来解决这个问题的.它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检">
+<meta name="description" content="什么叫深度?所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.观察者可以在任何位置.OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区. 深度缓冲区作用?一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.深度测试就是用来解决这个问题的.它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检查Z值,">
 <meta name="keywords" content="opengl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL(三)-深度测试">
 <meta property="og:url" content="http://yoursite.com/2019/02/20/OpenGL(三)-深度测试/index.html">
 <meta property="og:site_name" content="Sober&#39;s Notes">
-<meta property="og:description" content="##什么叫深度?所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.观察者可以在任何位置.OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区. ##深度缓冲区作用?一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.深度测试就是用来解决这个问题的.它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检">
+<meta property="og:description" content="什么叫深度?所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.观察者可以在任何位置.OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区. 深度缓冲区作用?一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.深度测试就是用来解决这个问题的.它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检查Z值,">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-d051cc5a629af2e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-109bc0ea39b59fca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-21T09:11:30.761Z">
+<meta property="og:updated_time" content="2019-02-21T09:23:00.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL(三)-深度测试">
-<meta name="twitter:description" content="##什么叫深度?所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.观察者可以在任何位置.OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区. ##深度缓冲区作用?一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.深度测试就是用来解决这个问题的.它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检">
+<meta name="twitter:description" content="什么叫深度?所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.观察者可以在任何位置.OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区. 深度缓冲区作用?一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.深度测试就是用来解决这个问题的.它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检查Z值,">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1352344-d051cc5a629af2e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -394,14 +394,13 @@
       
 
       
-        <p>##什么叫深度?<br>所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.<br>观察者可以在任何位置.<br>OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区.</p>
-<p>##深度缓冲区作用?<br>一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.<br>深度测试就是用来解决这个问题的.<br>它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检查Z值,靠近观察者的不覆盖, 远离观察者的被覆盖,而不是靠绘制顺序来决定.<br><a id="more"></a></p>
-<p>##如何使用深度缓冲区测试?<br>glEnable(GLDEPTHTEST);开启之后,就会先测试深度值再绘制<br>默认情况下, Z值小的会被覆盖</p>
+        <h2 id="什么叫深度"><a href="#什么叫深度" class="headerlink" title="什么叫深度?"></a>什么叫深度?</h2><p>所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.<br>观察者可以在任何位置.<br>OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区.</p>
+<h2 id="深度缓冲区作用"><a href="#深度缓冲区作用" class="headerlink" title="深度缓冲区作用?"></a>深度缓冲区作用?</h2><p>一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.<br>深度测试就是用来解决这个问题的.<br>它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检查Z值,靠近观察者的不覆盖, 远离观察者的被覆盖,而不是靠绘制顺序来决定.<br><a id="more"></a></p>
+<h2 id="如何使用深度缓冲区测试"><a href="#如何使用深度缓冲区测试" class="headerlink" title="如何使用深度缓冲区测试?"></a>如何使用深度缓冲区测试?</h2><p>glEnable(GLDEPTHTEST);开启之后,就会先测试深度值再绘制<br>默认情况下, Z值小的会被覆盖</p>
 <blockquote>
 <p>如果观察者,在Z轴的正方向,Z值大则靠近观察者<br>如果观察者,在Z轴的负方向,Z值小则靠近观察者</p>
 </blockquote>
-<p>##如何解决深度值相同,造成的冲突问题?</p>
-<ul>
+<h2 id="如何解决深度值相同-造成的冲突问题"><a href="#如何解决深度值相同-造成的冲突问题" class="headerlink" title="如何解决深度值相同,造成的冲突问题?"></a>如何解决深度值相同,造成的冲突问题?</h2><ul>
 <li>第一种方法:<br>在第二次绘制时, 稍微偏移一点点解决这个问题.注意:必须非常小心确保Z值的间隙.(比如贴在飞机上的五角星会悬浮起来的风险)</li>
 <li>第二种方法:<br>采用glPolygonOffset函数,使得可以调节片段的深度值.使深度值偏移而不产生悬浮.</li>
 </ul>
@@ -530,8 +529,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -635,6 +643,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么叫深度"><span class="nav-number">1.</span> <span class="nav-text">什么叫深度?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度缓冲区作用"><span class="nav-number">2.</span> <span class="nav-text">深度缓冲区作用?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用深度缓冲区测试"><span class="nav-number">3.</span> <span class="nav-text">如何使用深度缓冲区测试?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决深度值相同-造成的冲突问题"><span class="nav-number">4.</span> <span class="nav-text">如何解决深度值相同,造成的冲突问题?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

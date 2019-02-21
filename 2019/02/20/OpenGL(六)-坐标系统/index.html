@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-23f532bc337f5e3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-636d2df1e20af543.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-e0407f0f5602bb08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-21T09:12:03.504Z">
+<meta property="og:updated_time" content="2019-02-21T09:27:42.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL(六)-坐标系统">
 <meta name="twitter:description" content="在OpenGL 中有5种坐标系。1.局部坐标系(物体空间)2.世界空间3.观察空间(视觉空间)4.裁剪空间5.屏幕空间 下图是一个顶点最终转化到片段之前需要经历的所有不同的状态变化:  局部空间：   指的是物体所在的坐标空间，即是建立一个建模软件创建一个模型立方体。创建的立方体的原点可能是[0,0,0]。但它在你的程序里可能处于不同的位置。所以你的模型文件的顶点都以[0,0,0]这个为初始位置。">
@@ -398,12 +398,11 @@
         <p>在OpenGL 中有5种坐标系。<br>1.局部坐标系(物体空间)<br>2.世界空间<br>3.观察空间(视觉空间)<br>4.裁剪空间<br>5.屏幕空间</p>
 <p>下图是一个顶点最终转化到片段之前需要经历的所有不同的状态变化:<br><img src="https://upload-images.jianshu.io/upload_images/1352344-23f532bc337f5e3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="坐标转化.png"></p>
 <ul>
-<li><p>局部空间：<br>   指的是物体所在的坐标空间，即是建立一个建模软件创建一个模型立方体。创建的立方体的原点可能是[0,0,0]。但它在你的程序里可能处于不同的位置。所以你的模型文件的顶点都以[0,0,0]这个为初始位置。但是他们最终显示在世界坐标系的那个位置不由局部坐标系决定。<br> 你的模型文件所有的顶点都处于局部空间中。<br> 比如我创建一个立体箱子,它的范围和原点都是针对局部坐标的。</p>
-</li>
+<li>局部空间：<br>   指的是物体所在的坐标空间，即是建立一个建模软件创建一个模型立方体。创建的立方体的原点可能是[0,0,0]。但它在你的程序里可能处于不同的位置。所以你的模型文件的顶点都以[0,0,0]这个为初始位置。但是他们最终显示在世界坐标系的那个位置不由局部坐标系决定。<br> 你的模型文件所有的顶点都处于局部空间中。<br> 比如我创建一个立体箱子,它的范围和原点都是针对局部坐标的。<a id="more"></a></li>
 <li><p>世界空间：<br>  如果我们将我们所有的物体导入到程序当中，它们有可能会全挤在世界的原点(0, 0, 0)上，这并不是我们想要的结果。我们想为每一个物体定义一个位置，从而能在更大的世界当中放置它们。世界空间中的坐标正如其名：是指顶点相对于（游戏）世界的坐标。如果你希望将物体分散在世界上摆放（特别是非常真实的那样），这就是你希望物体变换到的空间。物体的坐标将会从局部变换到世界空间；该变换是由模型矩阵(Model Matrix)实现的</p>
 <blockquote>
 <p>模型矩阵是一种变换矩阵，它能通过对物体进行位移、缩放、旋转来将它置于它本应该在的位置或朝向。你可以将它想像为变换一个房子，你需要先将它缩小（它在局部空间中太大了），并将其位移至郊区的一个小镇，然后在y轴上往左旋转一点以搭配附近的房子。你也可以把上一节将箱子到处摆放在场景中用的那个矩阵大致看作一个模型矩阵；我们将箱子的局部坐标变换到场景/世界中的不同位置。</p>
-<a id="more"></a></blockquote>
+</blockquote>
 </li>
 <li><p>观察空间：<br> 观察空间经常被人们称之OpenGL的摄像机(Camera)（所以有时也称为摄像机空间(Camera Space)或视觉空间(Eye Space)）。观察空间是将世界空间坐标转化为用户视野前方的坐标而产生的结果。因此观察空间就是从摄像机的视角所观察到的空间。而这通常是由一系列的位移和旋转的组合来完成，平移/旋转场景从而使得特定的对象被变换到摄像机的前方。这些组合在一起的变换通常存储在一个观察矩阵(View Matrix)里，它被用来将世界坐标变换到观察空间</p>
 </li>

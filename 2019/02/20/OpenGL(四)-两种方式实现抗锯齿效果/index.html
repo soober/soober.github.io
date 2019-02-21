@@ -86,20 +86,20 @@
 
 
 
-<meta name="description" content="##方式一 : 利用混合(GLBlend)实现抗锯齿核心代码如下:12345678910111213141516171819202122232425262728293031323334// 选择菜单void ProcessMenu(int value)&amp;#123;    switch (value) &amp;#123;        case 1:            //打开抗锯齿功能">
+<meta name="description" content="方式一 : 利用混合(GLBlend)实现抗锯齿">
 <meta name="keywords" content="opengl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL(四)-两种方式实现抗锯齿效果">
 <meta property="og:url" content="http://yoursite.com/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/index.html">
 <meta property="og:site_name" content="Sober&#39;s Notes">
-<meta property="og:description" content="##方式一 : 利用混合(GLBlend)实现抗锯齿核心代码如下:12345678910111213141516171819202122232425262728293031323334// 选择菜单void ProcessMenu(int value)&amp;#123;    switch (value) &amp;#123;        case 1:            //打开抗锯齿功能">
+<meta property="og:description" content="方式一 : 利用混合(GLBlend)实现抗锯齿">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-3f124055f03e62da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-527ed002d39e9f25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-21T09:11:43.032Z">
+<meta property="og:updated_time" content="2019-02-21T09:25:56.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL(四)-两种方式实现抗锯齿效果">
-<meta name="twitter:description" content="##方式一 : 利用混合(GLBlend)实现抗锯齿核心代码如下:12345678910111213141516171819202122232425262728293031323334// 选择菜单void ProcessMenu(int value)&amp;#123;    switch (value) &amp;#123;        case 1:            //打开抗锯齿功能">
+<meta name="twitter:description" content="方式一 : 利用混合(GLBlend)实现抗锯齿">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1352344-3f124055f03e62da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -394,11 +394,10 @@
       
 
       
-        <p>##方式一 : 利用混合(GLBlend)实现抗锯齿<br>核心代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 选择菜单</span><br><span class="line">void ProcessMenu(int value)</span><br><span class="line">&#123;</span><br><span class="line">    switch (value) &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            //打开抗锯齿功能</span><br><span class="line">            //1.开启混合功能</span><br><span class="line">            glEnable(GL_BLEND);</span><br><span class="line">            </span><br><span class="line">            //2.指定混合因子</span><br><span class="line">            //注意:如果你修改了混合方程式,当你使用混合抗锯齿功能时,请一定要改为默认混合方程式</span><br><span class="line">            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);</span><br><span class="line">            </span><br><span class="line">            //3.开启对点\线\多边形的抗锯齿功能</span><br><span class="line">            glEnable(GL_POINT_SMOOTH);</span><br><span class="line">            glEnable(GL_LINE_SMOOTH);</span><br><span class="line">            glEnable(GL_POLYGON_SMOOTH);</span><br><span class="line">            </span><br><span class="line">            break;</span><br><span class="line">        </span><br><span class="line">        case 2:</span><br><span class="line">            //关闭抗锯齿功能</span><br><span class="line">            glDisable(GL_BLEND);</span><br><span class="line">            glDisable(GL_LINE_SMOOTH);</span><br><span class="line">            glDisable(GL_POINT_SMOOTH);</span><br><span class="line">            glDisable(GL_POLYGON_SMOOTH);</span><br><span class="line">            </span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>##方式二 : 利用多重采样实现抗锯齿<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//用多重采样来解决锯齿问题.可选</span><br><span class="line">    glEnable(GLUT_MULTISAMPLE);</span><br><span class="line">    </span><br><span class="line">    //绘制</span><br><span class="line">    moonBatch.Draw();</span><br><span class="line">    </span><br><span class="line">    //绘制完成,则关闭</span><br><span class="line">    glDisable(GLUT_MULTISAMPLE);</span><br></pre></td></tr></table></figure></p>
-<p>##效果图:</p>
-<ul>
+        <h2 id="方式一-利用混合-GLBlend-实现抗锯齿"><a href="#方式一-利用混合-GLBlend-实现抗锯齿" class="headerlink" title="方式一 : 利用混合(GLBlend)实现抗锯齿"></a>方式一 : 利用混合(GLBlend)实现抗锯齿</h2><a id="more"></a>
+<p>核心代码如下:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择菜单</span></span><br><span class="line"><span class="keyword">void</span> ProcessMenu(<span class="keyword">int</span> value)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">switch</span> (value) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//打开抗锯齿功能</span></span><br><span class="line">            <span class="comment">//1.开启混合功能</span></span><br><span class="line">            glEnable(GL_BLEND);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//2.指定混合因子</span></span><br><span class="line">            <span class="comment">//注意:如果你修改了混合方程式,当你使用混合抗锯齿功能时,请一定要改为默认混合方程式</span></span><br><span class="line">            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//3.开启对点\线\多边形的抗锯齿功能</span></span><br><span class="line">            glEnable(GL_POINT_SMOOTH);</span><br><span class="line">            glEnable(GL_LINE_SMOOTH);</span><br><span class="line">            glEnable(GL_POLYGON_SMOOTH);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//关闭抗锯齿功能</span></span><br><span class="line">            glDisable(GL_BLEND);</span><br><span class="line">            glDisable(GL_LINE_SMOOTH);</span><br><span class="line">            glDisable(GL_POINT_SMOOTH);</span><br><span class="line">            glDisable(GL_POLYGON_SMOOTH);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="方式二-利用多重采样实现抗锯齿"><a href="#方式二-利用多重采样实现抗锯齿" class="headerlink" title="方式二 : 利用多重采样实现抗锯齿"></a>方式二 : 利用多重采样实现抗锯齿</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用多重采样来解决锯齿问题.可选</span></span><br><span class="line">    glEnable(GLUT_MULTISAMPLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//绘制</span></span><br><span class="line">    moonBatch.Draw();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//绘制完成,则关闭</span></span><br><span class="line">    glDisable(GLUT_MULTISAMPLE);</span><br></pre></td></tr></table></figure>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图:"></a>效果图:</h2><ul>
 <li>关闭抗锯齿:<br><img src="http://upload-images.jianshu.io/upload_images/1352344-3f124055f03e62da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关闭抗锯齿.png"></li>
 <li>打开抗锯齿:<br><img src="http://upload-images.jianshu.io/upload_images/1352344-527ed002d39e9f25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打开抗锯齿.png"></li>
 </ul>
@@ -521,8 +520,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -626,6 +634,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方式一-利用混合-GLBlend-实现抗锯齿"><span class="nav-number">1.</span> <span class="nav-text">方式一 : 利用混合(GLBlend)实现抗锯齿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式二-利用多重采样实现抗锯齿"><span class="nav-number">2.</span> <span class="nav-text">方式二 : 利用多重采样实现抗锯齿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图"><span class="nav-number">3.</span> <span class="nav-text">效果图:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
