@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL-ES-Tips/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -320,7 +320,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/20/OpenGL-ES-Tips/" itemprop="url">OpenGL-ES Tips</a></h1>
+                <a class="post-title-link" href="/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/" itemprop="url">OpenGL(一)-初识OpenGL及其在Mac上的环境搭建</a></h1>
         
 
         <div class="post-meta">
@@ -393,10 +393,463 @@
 
       
         
-          <p>Opengl ES( Opengl for Embedded Systems)是 Opengl三维图形API的子集,针对手机、<br>PDA和游戏主机等嵌入式设备而设计。API由图形软硬件行业协会 Khronos Group定义推广<br>该协会主要关注图形和多媒体方面的开放标准。<br>Opengl ES是从 Opengl裁剪定制而来的,去除了 glbegin/glend、四边形(GL_ QUADS)、<br>多边形( GL POLYGONS)等复杂图元中许多非绝对必要的特性。经过多年发展,现在主<br>要有两个版本: Opengl ES1.x,针对固定管线硬件; Opengl ES2x,针对可编程管线硬件。</p>
+          <p>OpenGL是一种用于创建实时3D图像的编程接口。</p>
+<p>##走向3D<br>三维(3D)表示一个正在描述或显示的物体具有三个维度：宽度，高度，深度。几个世纪以来，艺术家们已经知道如何让一幅画有立体感并具有真实感的深度，通过颜料在二维画布上创作的作品，它其实本质上画的是一个二维物体。类似，计算机3D图像实质上也是平面的，它只是在计算机屏幕上所显示的二维图像，但它可以提供深度的错觉。实际上如果我们需要一个物体的二维画面从不同角度上感知三维空间，我们可以通过透视、隐藏直线消除、颜色、着色和其他技巧来创建深度幻觉。</p>
+<blockquote>
+<p>2D + 透视 = 3D</p>
+</blockquote>
+<p>##3D图形术语</p>
+<ul>
+<li>变化&amp;投影</li>
+<li>光栅化：实际绘制或填充每个顶点之间的像素形成过程</li>
+<li>着色：沿着顶点之间改变颜色值。着色器则是图形硬件上执行的单独程序，用来处理顶点和光栅化任务。</li>
+<li>纹理贴图：初学可以简单理解为贴到图形上的图片（但纹理并不是图片， 二者不等价）。在GPU上，纹理是快捷有效的。</li>
+<li>混合：混合是将不同的颜色混合在一起。<br>##3D图形的常见用途<br>实时3D图形的应用范围包括交互式游戏和模拟数据的可视化显示（供科学、医学或商业应用）；<br>在计算机领域，3D图形的应用几乎没有止境。目前最常见的用途，游戏、AR、VR，都是基于openGL的。3D图形在科学视觉和工程应用中非常流行，物美价廉的3D硬件大量涌现使得这些应用技术空前的流行火爆。<br><strong>Mac OS X以及iOS都是使用openGL对所有窗口和控件进行渲染，从而创建了功能强大，引人入胜的可视化界面。</strong><br>例如设计使用的3D Max， 游戏制作的Unity 3D， Cocos2D底层都是使用了openGL。医学上的影像渲染也是依托于openGL。
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/20/OpenGL-ES-Tips/#more" rel="contents">
+            <a class="btn" href="/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(上)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(上)/" itemprop="url">OpenGL(七)-纹理(上)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>###设定金字塔坐标<br><img src="https://upload-images.jianshu.io/upload_images/1352344-a2e064a191fa1a72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="金字塔.png"></p>
+<blockquote>
+<p>注意纹理坐标的设置方式:<br>  //设置顶点对应的纹理坐标<br>    // s , t 相当于 x , y<br>    // MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);<br>    //参数1:纹理的层次<br>    //参数2:s坐标<br>    //参数3:t坐标<br>    pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/OpenGL(七)-纹理(上)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></blockquote></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(三)-深度测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/OpenGL(三)-深度测试/" itemprop="url">OpenGL(三)-深度测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##什么叫深度?<br>所谓深度,就是在坐标系中,像素Z坐标距离观察者的距离.<br>观察者可以在任何位置.<br>OpenGL会有专门一块缓存区来存放Z值, 即深度缓冲区.</p>
+<p>##深度缓冲区作用?<br>一般情况下,我们绘制图形时,后面绘制的会覆盖前面的图形.这样就会产生一个性能问题:就是遮盖部分,先绘制的会被覆盖,那么这块区域就是无意义的绘制.<br>深度测试就是用来解决这个问题的.<br>它是如何处理的呢?有了深度缓冲区之后,绘制的时候会检查Z值,靠近观察者的不覆盖, 远离观察者的被覆盖,而不是靠绘制顺序来决定.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/OpenGL(三)-深度测试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(下)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(下)/" itemprop="url">OpenGL(七)-纹理(下)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##绘制一个隧道</p>
+<p>######定义绘制批次类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">GLShaderManager		shaderManager;			//着色器管理器</span><br><span class="line">GLMatrixStack		modelViewMatrix;		//模型视图矩阵</span><br><span class="line">GLMatrixStack		projectionMatrix;		//投影矩阵</span><br><span class="line">GLFrustum			viewFrustum;			//视景体</span><br><span class="line">GLGeometryTransform	transformPipeline;		//几何变换管线</span><br><span class="line"></span><br><span class="line">//4个批次容器类</span><br><span class="line">GLBatch             floorBatch;//地面</span><br><span class="line">GLBatch             ceilingBatch;//天花板</span><br><span class="line">GLBatch             leftWallBatch;//左墙面</span><br><span class="line">GLBatch             rightWallBatch;//右墙面</span><br><span class="line"></span><br><span class="line">//深度初始值，-65。</span><br><span class="line">GLfloat             viewZ = -65.0f;</span><br><span class="line"></span><br><span class="line">// 纹理标识符号</span><br><span class="line">#define TEXTURE_BRICK   0 //墙面</span><br><span class="line">#define TEXTURE_FLOOR   1 //地板</span><br><span class="line">#define TEXTURE_CEILING 2 //纹理天花板</span><br><span class="line">#define TEXTURE_COUNT   3 //纹理个数</span><br><span class="line">GLuint  textures[TEXTURE_COUNT];//纹理标记数组</span><br><span class="line"></span><br><span class="line">//文件tag名字数组</span><br><span class="line">const char *szTextureFiles[TEXTURE_COUNT] = &#123; &quot;brick.tga&quot;, &quot;floor.tga&quot;, &quot;ceiling.tga&quot; &#125;;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/OpenGL(七)-纹理(下)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -447,7 +900,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(五)-矩阵变换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -466,7 +919,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/19/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2019/02/20/OpenGL(五)-矩阵变换/" itemprop="url">OpenGL(五)-矩阵变换</a></h1>
         
 
         <div class="post-meta">
@@ -478,8 +931,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-19T16:49:29+08:00">
-                2019-02-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
               </time>
             
 
@@ -488,6 +941,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -517,18 +992,472 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+          <p>##关键函数讲解</p>
+<p>###平移<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//创建单元矩阵 </span><br><span class="line">M3DMatrix44f m3;</span><br><span class="line">m3dLoadIdentity44(m3);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  m3dTranslationMatrix44(M3DMatrix44f m, float x, float y, float z)</span><br><span class="line"> 参数1:结果矩阵,平移之后的结果矩阵</span><br><span class="line"> 参数2:沿着X轴移动多少,正数\负数</span><br><span class="line"> 参数3:沿着Y轴移动多少,正数\负数</span><br><span class="line"> 参数4:沿着Z轴移动多少,正数\负数</span><br><span class="line"> */</span><br><span class="line">m3dTranslationMatrix44(m3, 0.0f, 10.0f, 0.0f);</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/OpenGL(五)-矩阵变换/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(六)-坐标系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/OpenGL(六)-坐标系统/" itemprop="url">OpenGL(六)-坐标系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在OpenGL 中有5种坐标系。<br>1.局部坐标系(物体空间)<br>2.世界空间<br>3.观察空间(视觉空间)<br>4.裁剪空间<br>5.屏幕空间</p>
+<p>下图是一个顶点最终转化到片段之前需要经历的所有不同的状态变化:<br><img src="https://upload-images.jianshu.io/upload_images/1352344-23f532bc337f5e3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="坐标转化.png"></p>
+<ul>
+<li><p>局部空间：<br>   指的是物体所在的坐标空间，即是建立一个建模软件创建一个模型立方体。创建的立方体的原点可能是[0,0,0]。但它在你的程序里可能处于不同的位置。所以你的模型文件的顶点都以[0,0,0]这个为初始位置。但是他们最终显示在世界坐标系的那个位置不由局部坐标系决定。<br> 你的模型文件所有的顶点都处于局部空间中。<br> 比如我创建一个立体箱子,它的范围和原点都是针对局部坐标的。</p>
+</li>
+<li><p>世界空间：<br>  如果我们将我们所有的物体导入到程序当中，它们有可能会全挤在世界的原点(0, 0, 0)上，这并不是我们想要的结果。我们想为每一个物体定义一个位置，从而能在更大的世界当中放置它们。世界空间中的坐标正如其名：是指顶点相对于（游戏）世界的坐标。如果你希望将物体分散在世界上摆放（特别是非常真实的那样），这就是你希望物体变换到的空间。物体的坐标将会从局部变换到世界空间；该变换是由模型矩阵(Model Matrix)实现的</p>
+<blockquote>
+<p>模型矩阵是一种变换矩阵，它能通过对物体进行位移、缩放、旋转来将它置于它本应该在的位置或朝向。你可以将它想像为变换一个房子，你需要先将它缩小（它在局部空间中太大了），并将其位移至郊区的一个小镇，然后在y轴上往左旋转一点以搭配附近的房子。你也可以把上一节将箱子到处摆放在场景中用的那个矩阵大致看作一个模型矩阵；我们将箱子的局部坐标变换到场景/世界中的不同位置。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/OpenGL(六)-坐标系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </blockquote></li></ul></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(二)-基本图元绘制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/OpenGL(二)-基本图元绘制/" itemprop="url">OpenGL(二)-基本图元绘制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="OpenGL与着色器"><a href="#OpenGL与着色器" class="headerlink" title="OpenGL与着色器"></a>OpenGL与着色器</h2><p>在OpenGL 3.0之前，OpenGL包含一个固定功能的管线，它可以在不使用着色器的情况下处理几何与像素数据。从3.1版本开始，固定管线从核心模式去掉。因此现在需要使用着色器来完成工作.<br>我们会使用GLSL,(OpenGL Shading Language，它是在OpenGL 2.0版本发布的)。 语法与“C、C++”类似。</p>
+<p>##基础图形管线<br>OpenGL中的图元只不过是顶点的集合以预定义的方式结合在一起。<br>管线分为:2个部分，上半部分是 客户机端，下半部分是服务器端。<br>服务器 和 客户端 在功能和运行上都是异步的。它们是各自独立的软件块或硬件块。<br><img src="http://upload-images.jianshu.io/upload_images/1352344-6e7d1510dbd5c588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>三种向OpenGL 着色器传递渲染数据的方法:</p>
+<ul>
+<li>属性:<blockquote>
+<p>就是对一个顶点都要作改变的数据元素。实际上，顶点位置本身就是一个属性。属性可以是浮点类型、整型、布尔类型.</p>
+</blockquote>
+</li>
+<li>Uniform:<blockquote>
+<p>通过设置Uniform 变量发送一个图元批次命令。Uniform 变量实际上可以无限次限制地使用，比如设置一个应用于整个表面的单个颜色值。还可以设置一个时间值</p>
+</blockquote>
+</li>
+<li><p>纹理</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/OpenGL(二)-基本图元绘制/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/" itemprop="url">OpenGL(四)-两种方式实现抗锯齿效果</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##方式一 : 利用混合(GLBlend)实现抗锯齿<br>核心代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 选择菜单</span><br><span class="line">void ProcessMenu(int value)</span><br><span class="line">&#123;</span><br><span class="line">    switch (value) &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            //打开抗锯齿功能</span><br><span class="line">            //1.开启混合功能</span><br><span class="line">            glEnable(GL_BLEND);</span><br><span class="line">            </span><br><span class="line">            //2.指定混合因子</span><br><span class="line">            //注意:如果你修改了混合方程式,当你使用混合抗锯齿功能时,请一定要改为默认混合方程式</span><br><span class="line">            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);</span><br><span class="line">            </span><br><span class="line">            //3.开启对点\线\多边形的抗锯齿功能</span><br><span class="line">            glEnable(GL_POINT_SMOOTH);</span><br><span class="line">            glEnable(GL_LINE_SMOOTH);</span><br><span class="line">            glEnable(GL_POLYGON_SMOOTH);</span><br><span class="line">            </span><br><span class="line">            break;</span><br><span class="line">        </span><br><span class="line">        case 2:</span><br><span class="line">            //关闭抗锯齿功能</span><br><span class="line">            glDisable(GL_BLEND);</span><br><span class="line">            glDisable(GL_LINE_SMOOTH);</span><br><span class="line">            glDisable(GL_POINT_SMOOTH);</span><br><span class="line">            glDisable(GL_POLYGON_SMOOTH);</span><br><span class="line">            </span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -610,7 +1539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -739,7 +1668,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.1k字</span>
+  <span class="post-count">博客全站共8.8k字</span>
 </div>
 
         

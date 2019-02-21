@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="opengl,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="###设定金字塔坐标  注意纹理坐标的设置方式:  //设置顶点对应的纹理坐标    // s , t 相当于 x , y    // MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);    //参数1:纹理的层次    //参数2:s坐标    //参数3:t坐标    pyramidBatch.MultiTexCoord2f(0,">
+<meta name="keywords" content="opengl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL(七)-纹理(上)">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(上)/index.html">
+<meta property="og:site_name" content="Sober&#39;s Notes">
+<meta property="og:description" content="###设定金字塔坐标  注意纹理坐标的设置方式:  //设置顶点对应的纹理坐标    // s , t 相当于 x , y    // MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);    //参数1:纹理的层次    //参数2:s坐标    //参数3:t坐标    pyramidBatch.MultiTexCoord2f(0,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-a2e064a191fa1a72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-2c465b3ac09b296a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-454581dbb712a9ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-21T09:12:20.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL(七)-纹理(上)">
+<meta name="twitter:description" content="###设定金字塔坐标  注意纹理坐标的设置方式:  //设置顶点对应的纹理坐标    // s , t 相当于 x , y    // MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);    //参数1:纹理的层次    //参数2:s坐标    //参数3:t坐标    pyramidBatch.MultiTexCoord2f(0,">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1352344-a2e064a191fa1a72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(上)/">
+
+
+
+
+
+  <title>OpenGL(七)-纹理(上) | Sober's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sober's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(七)-纹理(上)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenGL(七)-纹理(上)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###设定金字塔坐标<br><img src="https://upload-images.jianshu.io/upload_images/1352344-a2e064a191fa1a72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="金字塔.png"></p>
+<blockquote>
+<p>注意纹理坐标的设置方式:<br>  //设置顶点对应的纹理坐标<br>    // s , t 相当于 x , y<br>    // MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);<br>    //参数1:纹理的层次<br>    //参数2:s坐标<br>    //参数3:t坐标<br>    pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);<br>    <a id="more"></a></p>
+</blockquote>
+<p>###绘制金字塔纹理</p>
+<p>######1. 顶点/纹理坐标数据设置及图形绘制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">GLBatch             pyramidBatch;//绘制批次类</span><br><span class="line">   //1.pyramidBatch</span><br><span class="line">   //通过三角形批次类pyramidBatch 来组件图形</span><br><span class="line">   //参数1:类型</span><br><span class="line">   //参数2:顶点数 6 * 3 = 18</span><br><span class="line">   //参数3:需要使用到纹理,默认为0,可以不写这个参数</span><br><span class="line">   pyramidBatch.Begin(GL_TRIANGLES, 18,1);</span><br><span class="line"></span><br><span class="line">   //2.金字塔各个面的点坐标设置</span><br><span class="line"></span><br><span class="line">   //金字塔底部</span><br><span class="line">   //底部四边形 = 三角形X + 三角形Y</span><br><span class="line">   //三角形X</span><br><span class="line">   //----------vBlackLeft------------</span><br><span class="line">   //设置法线坐标-光照</span><br><span class="line">   pyramidBatch.Normal3f(0.0f, -1.0f, 0.0f);</span><br><span class="line"></span><br><span class="line">   //设置顶点对应的纹理坐标</span><br><span class="line">   // MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);</span><br><span class="line">   //参数1:纹理的层次</span><br><span class="line">   //参数2:s坐标</span><br><span class="line">   //参数3:t坐标</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);</span><br><span class="line">   </span><br><span class="line">   //设置顶点坐标</span><br><span class="line">   pyramidBatch.Vertex3f(-1.0f, -1.0f, -1.0f);</span><br><span class="line">   </span><br><span class="line">   //------vBackRight------------</span><br><span class="line">   pyramidBatch.Normal3f(0.0f, -1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3f(1.0f, -1.0f, -1.0f);</span><br><span class="line">  </span><br><span class="line">   //------vFrontRight点------------</span><br><span class="line">   pyramidBatch.Normal3f(0.0f, -1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 1.0f, 1.0f);</span><br><span class="line">   pyramidBatch.Vertex3f(1.0f, -1.0f, 1.0f);</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   //三角形Y</span><br><span class="line">   pyramidBatch.Normal3f(0.0f, -1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.0f, 1.0f);</span><br><span class="line">   pyramidBatch.Vertex3f(-1.0f, -1.0f, 1.0f);</span><br><span class="line">   </span><br><span class="line">   pyramidBatch.Normal3f(0.0f, -1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3f(-1.0f, -1.0f, -1.0f);</span><br><span class="line">   </span><br><span class="line">   pyramidBatch.Normal3f(0.0f, -1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 1.0f, 1.0f);</span><br><span class="line">   pyramidBatch.Vertex3f(1.0f, -1.0f, 1.0f);</span><br><span class="line"></span><br><span class="line">   //塔顶</span><br><span class="line">   M3DVector3f vApex = &#123;0.0f,1.0f,0.0f&#125;;</span><br><span class="line">   M3DVector3f vFrontLeft = &#123;-1.0f,-1.0f,1.0f&#125;;</span><br><span class="line">   M3DVector3f vFrontRight = &#123;1.0f,-1.0f,1.0f&#125;;</span><br><span class="line">   M3DVector3f vBackLeft = &#123;-1.0f,-1.0f,-1.0f&#125;;</span><br><span class="line">   M3DVector3f vBackRight = &#123;1.0f,-1.0f,-1.0f&#125;;</span><br><span class="line">   </span><br><span class="line">   //目的:为了临时存储法线向量</span><br><span class="line">   M3DVector3f n;</span><br><span class="line">   </span><br><span class="line">   //金字塔的前面</span><br><span class="line">   //三角形:(Apex,vFrontLeft,vFrontRight)</span><br><span class="line">   </span><br><span class="line">   //找法线</span><br><span class="line">   //m3dFindNormal(M3DVector3f result, const M3DVector3f point1, const M3DVector3f point2,const M3DVector3f point3);</span><br><span class="line">   //参数1:结果</span><br><span class="line">   //参数2-4:3个顶点</span><br><span class="line">   m3dFindNormal(n, vApex, vFrontLeft, vFrontRight);</span><br><span class="line">   </span><br><span class="line">   //vApex</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.5, 1.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vApex);</span><br><span class="line">   </span><br><span class="line">   //vFrontLeft</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vFrontLeft);</span><br><span class="line">   </span><br><span class="line">   //vFrongRight</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vFrontRight);</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   //金字塔的左边</span><br><span class="line">   //三角形:(Apex,vBackLeft,vFrontLeft)</span><br><span class="line">   m3dFindNormal(n, vApex, vBackLeft, vFrontLeft);</span><br><span class="line"></span><br><span class="line">   //vApex</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.5f, 1.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vApex);</span><br><span class="line">   </span><br><span class="line">   //vBackLeft</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vBackLeft);</span><br><span class="line">   </span><br><span class="line">   //vFrontLeft</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vFrontLeft);</span><br><span class="line">   </span><br><span class="line">   //金字塔右边</span><br><span class="line">   //三角形：（vApex, vFrontRight, vBackRight）</span><br><span class="line">   m3dFindNormal(n, vApex, vFrontRight, vBackRight);</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.5f, 1.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vApex);</span><br><span class="line">   </span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vFrontRight);</span><br><span class="line">   </span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vBackRight);</span><br><span class="line">   </span><br><span class="line">   //金字塔后边</span><br><span class="line">   //三角形：（vApex, vBackRight, vBackLeft）</span><br><span class="line">   m3dFindNormal(n, vApex, vBackRight, vBackLeft);</span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.5f, 1.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vApex);</span><br><span class="line">   </span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 0.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vBackRight);</span><br><span class="line">   </span><br><span class="line">   pyramidBatch.Normal3fv(n);</span><br><span class="line">   pyramidBatch.MultiTexCoord2f(0, 1.0f, 0.0f);</span><br><span class="line">   pyramidBatch.Vertex3fv(vBackLeft);</span><br><span class="line">   </span><br><span class="line">   //结束批次设置</span><br><span class="line">   pyramidBatch.End();</span><br></pre></td></tr></table></figure></p>
+<p>######2.加载2D纹理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">// 将TGA文件加载为2D纹理。</span><br><span class="line">//参数1:纹理文件名称</span><br><span class="line">//参数2:缩小时过滤器使用的哪一种</span><br><span class="line">//参数3:放大小时过滤器使用的哪一种</span><br><span class="line">//参数4:纹理坐标环绕方式</span><br><span class="line">bool LoadTGATexture(const char *szFileName, GLenum minFilter, GLenum magFilter, GLenum wrapMode)</span><br><span class="line">&#123;</span><br><span class="line">    GLbyte *pBits;</span><br><span class="line">    int nWidth,nHeight,nComponents;</span><br><span class="line">    GLenum eFormat;</span><br><span class="line">    </span><br><span class="line">    //1.读取纹理的像素</span><br><span class="line">    //参数1:纹理文件的名称</span><br><span class="line">    //参数2:文件的宽度地址</span><br><span class="line">    //参数3:文件的高度地址</span><br><span class="line">    //参数4:文件的组件地址</span><br><span class="line">    //参数5:文件格式地址</span><br><span class="line">    //返回值:pBits ,指向图像数据的指针</span><br><span class="line">    pBits =  gltReadTGABits(szFileName, &amp;nWidth, &amp;nHeight, &amp;nComponents, &amp;eFormat);</span><br><span class="line">    </span><br><span class="line">    if (pBits == NULL) &#123;</span><br><span class="line">        </span><br><span class="line">        printf(&quot;读取纹理像素失败\n&quot;);</span><br><span class="line">        return  false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //2.设置纹理参数</span><br><span class="line">    //设置s,t的环绕方式</span><br><span class="line">    //glTexParameteri (GLenum target, GLenum pname, GLint param);</span><br><span class="line">    //参数1:纹理维度</span><br><span class="line">    //参数2:为S/T坐标设置环绕模式</span><br><span class="line">    //参数3:wrapMode,环绕模式</span><br><span class="line">    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);</span><br><span class="line">    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);</span><br><span class="line">    </span><br><span class="line">    //设置放大\缩小的过滤方式</span><br><span class="line">    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilter);</span><br><span class="line">    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, magFilter);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //3.精密包装像素数据</span><br><span class="line">    //glPixelStorei (GLenum pname, GLint param);</span><br><span class="line">    //参数1:GL_UNPACK_ALIGNMENT ,OpenGL 如何从数据缓存区中解包图像数据</span><br><span class="line">    //参数2:设置GL_UNPACK_ALIGNMENT的值</span><br><span class="line">    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);</span><br><span class="line">    </span><br><span class="line">    //4.载入纹理</span><br><span class="line">    //glTexImage2D (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);</span><br><span class="line">    //参数1:纹理的维度</span><br><span class="line">    //参数2:mip贴图层次</span><br><span class="line">    //参数3:加载纹理颜色成分(从读取像素图获取的)</span><br><span class="line">    //参数4:加载纹理的宽</span><br><span class="line">    //参数5:加载纹理的高</span><br><span class="line">    //参数6:纹理的边框</span><br><span class="line">    //参数7:像素数据的类型</span><br><span class="line">    //参数8:指向纹理数据的指针</span><br><span class="line">    //详细可参考PPT</span><br><span class="line">    glTexImage2D(GL_TEXTURE_2D, 0, nComponents, nWidth, nHeight, 0, eFormat, GL_UNSIGNED_BYTE, pBits);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //使用完释放</span><br><span class="line">    free(pBits);</span><br><span class="line">    </span><br><span class="line">    //只有minFilter 等于以下四种模式，才可以生成Mip贴图</span><br><span class="line">    //GL_NEAREST_MIPMAP_NEAREST具有非常好的性能，并且闪烁现象非常弱</span><br><span class="line">    //GL_LINEAR_MIPMAP_NEAREST常常用于对游戏进行加速，它使用了高质量的线性过滤器</span><br><span class="line">    //GL_LINEAR_MIPMAP_LINEAR 和GL_NEAREST_MIPMAP_LINEAR 过滤器在Mip层之间执行了一些额外的插值，以消除他们之间的过滤痕迹。</span><br><span class="line">    //GL_LINEAR_MIPMAP_LINEAR 三线性Mip贴图。纹理过滤的黄金准则，具有最高的精度。</span><br><span class="line">    if(minFilter == GL_LINEAR_MIPMAP_LINEAR ||</span><br><span class="line">       minFilter == GL_LINEAR_MIPMAP_NEAREST ||</span><br><span class="line">       minFilter == GL_NEAREST_MIPMAP_LINEAR ||</span><br><span class="line">       minFilter == GL_NEAREST_MIPMAP_NEAREST)</span><br><span class="line">        </span><br><span class="line">        //加载Mip,纹理生成所有的Mip层</span><br><span class="line">        //参数：GL_TEXTURE_1D、GL_TEXTURE_2D、GL_TEXTURE_3D</span><br><span class="line">        glGenerateMipmap(GL_TEXTURE_2D);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>######3.SetUp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">void SetupRC()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    glClearColor(0.7f, 0.7f,0.7f, 1.0f);</span><br><span class="line">    </span><br><span class="line">    shaderManager.InitializeStockShaders();</span><br><span class="line">    </span><br><span class="line">    //开启深度测试</span><br><span class="line">    glEnable(GL_DEPTH_TEST);</span><br><span class="line">    </span><br><span class="line">    //纹理对象的处理</span><br><span class="line">    //1.分配纹理对象</span><br><span class="line">    // glGenTextures (GLsizei n, GLuint *textures);</span><br><span class="line">    //参数1:纹理对象的个数</span><br><span class="line">    //参数2:纹理对象的指针</span><br><span class="line">    glGenTextures(1, &amp;textureID);</span><br><span class="line"></span><br><span class="line">    //2.绑定纹理状态</span><br><span class="line">    //glBindTexture (GLenum target, GLuint texture);</span><br><span class="line">    //参数1:纹理的状态,GL_TEXTURE_1D\GL_TEXTURE_2D\GL_TEXTURE_3D</span><br><span class="line">    glBindTexture(GL_TEXTURE_2D, textureID);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //3.将TGA文件加载成2D纹理</span><br><span class="line">    //函数是开发者自己设计的</span><br><span class="line">    //参数1:纹理文件名称</span><br><span class="line">    //参数2:缩小时过滤器使用的哪一种</span><br><span class="line">    //参数3:放大小时过滤器使用的哪一种</span><br><span class="line">    //参数4:纹理坐标环绕方式</span><br><span class="line">    LoadTGATexture(&quot;brick.tga&quot;, GL_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE);</span><br><span class="line">    </span><br><span class="line">    //4.设置渲染图像的顶点--金字塔</span><br><span class="line">    MakePyramid(pyramidBatch);</span><br><span class="line">    </span><br><span class="line">    cameraFrame.MoveForward(-10.0);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>######4.渲染<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">void RenderScene(void)</span><br><span class="line">&#123;</span><br><span class="line">    //光照位置</span><br><span class="line">    static GLfloat vLightPos[] = &#123;1.0f,1.0f,0.0f&#125;;</span><br><span class="line">    </span><br><span class="line">    //关照颜色</span><br><span class="line">    static GLfloat vWhite[] = &#123;1.0f,0.0f,0.0f,1.0f&#125;;</span><br><span class="line">    </span><br><span class="line">    //glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER|GL_STENCIL_BUFFER_BIT);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);</span><br><span class="line">    </span><br><span class="line">    modelViewMatrix.PushMatrix();</span><br><span class="line">    </span><br><span class="line">    //观察者</span><br><span class="line">    M3DMatrix44f mCamera;</span><br><span class="line">    cameraFrame.GetCameraMatrix(mCamera);</span><br><span class="line">    modelViewMatrix.MultMatrix(mCamera);</span><br><span class="line">    </span><br><span class="line">    //</span><br><span class="line">    M3DMatrix44f mObjectFrame;</span><br><span class="line">    objectFrame.GetMatrix(mObjectFrame);</span><br><span class="line">    modelViewMatrix.MultMatrix(mObjectFrame);</span><br><span class="line">    </span><br><span class="line">    //错误地方!!!</span><br><span class="line">    //glBindTexture(GL_TEXTURE_2D, 0);</span><br><span class="line">    glBindTexture(GL_TEXTURE_2D, textureID);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    //点光源着色器</span><br><span class="line">    //参数1:GLT_SHADER_TEXTURE_POINT_LIGHT_DIFF</span><br><span class="line">    //参数2:模型视图矩阵</span><br><span class="line">    //参数3:投影矩阵</span><br><span class="line">    //参数4:光源的位置</span><br><span class="line">    //参数5:光的颜色</span><br><span class="line">    //参数6:图形颜色(如使用了纹理,则设置为0)</span><br><span class="line">    shaderManager.UseStockShader(GLT_SHADER_TEXTURE_POINT_LIGHT_DIFF,transformPipeline.GetModelViewMatrix(),transformPipeline.GetProjectionMatrix(),vLightPos,vWhite,0);</span><br><span class="line">    </span><br><span class="line">  </span><br><span class="line">    pyramidBatch.Draw();</span><br><span class="line">    </span><br><span class="line">    modelViewMatrix.PopMatrix();</span><br><span class="line">    </span><br><span class="line">    glutSwapBuffers();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>######效果图<br><img src="https://upload-images.jianshu.io/upload_images/1352344-2c465b3ac09b296a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/1352344-454581dbb712a9ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你赏我糖果吃</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.jpg" alt="Sober 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Sober 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/opengl/" rel="tag"><i class="fa fa-tag"></i> opengl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/20/OpenGL(三)-深度测试/" rel="next" title="OpenGL(三)-深度测试">
+                <i class="fa fa-chevron-left"></i> OpenGL(三)-深度测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/" rel="prev" title="OpenGL(一)-初识OpenGL及其在Mac上的环境搭建">
+                OpenGL(一)-初识OpenGL及其在Mac上的环境搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sober.png" alt="Sober">
+            
+              <p class="site-author-name" itemprop="name">Sober</p>
+              <p class="site-description motion-element" itemprop="description">GET SOBER. STAY SOBER.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/soober" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:jytiann@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2938187707" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/fb92567f10ab" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-bookmark"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sober</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.8k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

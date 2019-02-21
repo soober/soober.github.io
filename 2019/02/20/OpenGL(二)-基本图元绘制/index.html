@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="opengles,">
+  <meta name="keywords" content="opengl,">
 
 
 
@@ -86,18 +86,31 @@
 
 
 
-<meta name="description" content="Opengl ES( Opengl for Embedded Systems)是 Opengl三维图形API的子集,针对手机、PDA和游戏主机等嵌入式设备而设计。API由图形软硬件行业协会 Khronos Group定义推广该协会主要关注图形和多媒体方面的开放标准。Opengl ES是从 Opengl裁剪定制而来的,去除了 glbegin/glend、四边形(GL_ QUADS)、多边形( GL">
-<meta name="keywords" content="opengles">
+<meta name="description" content="OpenGL与着色器在OpenGL 3.0之前，OpenGL包含一个固定功能的管线，它可以在不使用着色器的情况下处理几何与像素数据。从3.1版本开始，固定管线从核心模式去掉。因此现在需要使用着色器来完成工作.我们会使用GLSL,(OpenGL Shading Language，它是在OpenGL 2.0版本发布的)。 语法与“C、C++”类似。 ##基础图形管线OpenGL中的图元只不过是顶点的集">
+<meta name="keywords" content="opengl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenGL-ES Tips">
-<meta property="og:url" content="http://yoursite.com/2019/02/20/OpenGL-ES-Tips/index.html">
+<meta property="og:title" content="OpenGL(二)-基本图元绘制">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/OpenGL(二)-基本图元绘制/index.html">
 <meta property="og:site_name" content="Sober&#39;s Notes">
-<meta property="og:description" content="Opengl ES( Opengl for Embedded Systems)是 Opengl三维图形API的子集,针对手机、PDA和游戏主机等嵌入式设备而设计。API由图形软硬件行业协会 Khronos Group定义推广该协会主要关注图形和多媒体方面的开放标准。Opengl ES是从 Opengl裁剪定制而来的,去除了 glbegin/glend、四边形(GL_ QUADS)、多边形( GL">
+<meta property="og:description" content="OpenGL与着色器在OpenGL 3.0之前，OpenGL包含一个固定功能的管线，它可以在不使用着色器的情况下处理几何与像素数据。从3.1版本开始，固定管线从核心模式去掉。因此现在需要使用着色器来完成工作.我们会使用GLSL,(OpenGL Shading Language，它是在OpenGL 2.0版本发布的)。 语法与“C、C++”类似。 ##基础图形管线OpenGL中的图元只不过是顶点的集">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-21T03:25:08.622Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-6e7d1510dbd5c588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-94c5dce0be9f2720.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-caeef381615becc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-ed3232a696abc59e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-01c574d27e586d60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-951ae5defd30e08e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-2b190e2bab9a77d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-87c38db647e2b147.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-eb10ff26489d89cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-1a6b500d7b7ca0b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-bb161975a6a3e483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-d9379cfb0623895f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-21T09:11:15.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenGL-ES Tips">
-<meta name="twitter:description" content="Opengl ES( Opengl for Embedded Systems)是 Opengl三维图形API的子集,针对手机、PDA和游戏主机等嵌入式设备而设计。API由图形软硬件行业协会 Khronos Group定义推广该协会主要关注图形和多媒体方面的开放标准。Opengl ES是从 Opengl裁剪定制而来的,去除了 glbegin/glend、四边形(GL_ QUADS)、多边形( GL">
+<meta name="twitter:title" content="OpenGL(二)-基本图元绘制">
+<meta name="twitter:description" content="OpenGL与着色器在OpenGL 3.0之前，OpenGL包含一个固定功能的管线，它可以在不使用着色器的情况下处理几何与像素数据。从3.1版本开始，固定管线从核心模式去掉。因此现在需要使用着色器来完成工作.我们会使用GLSL,(OpenGL Shading Language，它是在OpenGL 2.0版本发布的)。 语法与“C、C++”类似。 ##基础图形管线OpenGL中的图元只不过是顶点的集">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1352344-6e7d1510dbd5c588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -127,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/20/OpenGL-ES-Tips/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/OpenGL(二)-基本图元绘制/">
 
 
 
 
 
-  <title>OpenGL-ES Tips | Sober's Notes</title>
+  <title>OpenGL(二)-基本图元绘制 | Sober's Notes</title>
   
 
 
@@ -302,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL-ES-Tips/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(二)-基本图元绘制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -319,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OpenGL-ES Tips</h1>
+          <h1 class="post-title" itemprop="name headline">OpenGL(二)-基本图元绘制</h1>
         
 
         <div class="post-meta">
@@ -391,45 +404,152 @@
       
 
       
-        <p>Opengl ES( Opengl for Embedded Systems)是 Opengl三维图形API的子集,针对手机、<br>PDA和游戏主机等嵌入式设备而设计。API由图形软硬件行业协会 Khronos Group定义推广<br>该协会主要关注图形和多媒体方面的开放标准。<br>Opengl ES是从 Opengl裁剪定制而来的,去除了 glbegin/glend、四边形(GL_ QUADS)、<br>多边形( GL POLYGONS)等复杂图元中许多非绝对必要的特性。经过多年发展,现在主<br>要有两个版本: Opengl ES1.x,针对固定管线硬件; Opengl ES2x,针对可编程管线硬件。</p>
+        <h2 id="OpenGL与着色器"><a href="#OpenGL与着色器" class="headerlink" title="OpenGL与着色器"></a>OpenGL与着色器</h2><p>在OpenGL 3.0之前，OpenGL包含一个固定功能的管线，它可以在不使用着色器的情况下处理几何与像素数据。从3.1版本开始，固定管线从核心模式去掉。因此现在需要使用着色器来完成工作.<br>我们会使用GLSL,(OpenGL Shading Language，它是在OpenGL 2.0版本发布的)。 语法与“C、C++”类似。</p>
+<p>##基础图形管线<br>OpenGL中的图元只不过是顶点的集合以预定义的方式结合在一起。<br>管线分为:2个部分，上半部分是 客户机端，下半部分是服务器端。<br>服务器 和 客户端 在功能和运行上都是异步的。它们是各自独立的软件块或硬件块。<br><img src="http://upload-images.jianshu.io/upload_images/1352344-6e7d1510dbd5c588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>三种向OpenGL 着色器传递渲染数据的方法:</p>
+<ul>
+<li>属性:<blockquote>
+<p>就是对一个顶点都要作改变的数据元素。实际上，顶点位置本身就是一个属性。属性可以是浮点类型、整型、布尔类型.</p>
+</blockquote>
+</li>
+<li>Uniform:<blockquote>
+<p>通过设置Uniform 变量发送一个图元批次命令。Uniform 变量实际上可以无限次限制地使用，比如设置一个应用于整个表面的单个颜色值。还可以设置一个时间值</p>
+</blockquote>
+</li>
+<li><p>纹理</p>
 <a id="more"></a>
-<p>以下转载自网络:</p>
-<ol>
-<li>CAEAGLLayer，在CAEAGLLayer层上进行OpenGL的绘制.  </li>
-<li>EAGLContext，创建OpenGL context，管理所有使用OpenGL ES进行绘制的状态，命令及资源信息。<br> 需要生命API，设置为当前context  </li>
-<li><p>渲染缓冲区 renderbuffer，三种colorbuffer，depthbuffer，stencilbuffer  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void glGenRenderbuffers (GLsizei n, GLuint* renderbuffers) 将分配到的renderbuffer的id存于renderbuffers中。  </span><br><span class="line">void glBindRenderbuffer (GLenum target, GLuint renderbuffer) 将指定id的renderbuffer设置为当前renderbuffer。  </span><br><span class="line">(BOOL)renderbufferStorage:(NSUInteger)target fromDrawable:(id&lt;EAGLDrawable&gt;)drawable 为renderbuffer分配存储空间</span><br></pre></td></tr></table></figure>
+<h2 id="基本图元类型"><a href="#基本图元类型" class="headerlink" title="基本图元类型"></a>基本图元类型</h2><p><img src="http://upload-images.jianshu.io/upload_images/1352344-94c5dce0be9f2720.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-caeef381615becc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 </li>
-<li><p>帧缓冲区 framebuffer，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void glGenFramebuffers (GLsizei n, GLuint* framebuffers)  </span><br><span class="line">void glBindFramebuffer (GLenum target, GLuint framebuffer) 设置为当前framebuffer  </span><br><span class="line">void glFramebufferRenderbuffer (GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer) 将renderbuffer装配到attachment这个装配点上</span><br></pre></td></tr></table></figure>
+<li><p>注意着重区分以下三种绘制方式的区别<br><img src="http://upload-images.jianshu.io/upload_images/1352344-ed3232a696abc59e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-01c574d27e586d60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 </li>
-<li><p>设置clearColor  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glClearColor(1.0, 1.0, 1.0, 1.0)// 设置clearColor  </span><br><span class="line">glClear(GL_COLOR_BUFFER_BIT)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用presentRenderbuffer方法, 将renderbuffer和colorbuffer呈现到UIView上.  </p>
-</li>
-<li><p>着色器由类似C的语言GLSL编写.<br> Vertex shader: 顶点着色器. 如在长方形中vertex shader会被调用四次.  </p>
-<pre><code>负责执行灯光, 几何变换等计算, 得出最终的顶点位置后, 为片段着色器提供数据.  
-</code></pre><p> Fragment shader: 片段着色器, 负责计算每个像素的最终颜色.<br> 着色器使用之前要先编译,以及其他的一些操作.  </p>
-</li>
-<li><p>glVertexAttribPointer指定了渲染时索引值为index的顶点属性数组的数据格式和位置.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void glVertexAttribPointer( GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride,const GLvoid * pointer)  </span><br><span class="line">size和type分别指定每个顶点属性的组件数量和数据类型, normalized指定当被访问时, 固定点数据值是否应该被归一化或直接转换为固定点值.  </span><br><span class="line">stride指定连续顶点属性之间的偏移量, 用于描述每个vertex数据大小.  </span><br><span class="line">pointer指定第一个组件在数组的第一个顶点属性中的偏移量, 与GL_ARRAY_BUFFER绑定存储于缓冲区中.  </span><br><span class="line">如:  </span><br><span class="line">   glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);  </span><br><span class="line">   glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid *)(sizeof(float)*3));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>指定triangle的三个顶点, 然后调用glVertexAttribPointer和glEnableVertexAttribArray来加载vertex数据.<br> 最后调用glDrawArrays(GL_TRIANGLES, 0, 3)来绘制triangle.  </p>
-</li>
-<li>在compileShaders中的glGetAttribLocation方法, “vPosition”要和shader中的对应一致.</li>
-</ol>
-<ol start="11">
-<li>使用CoreImage的filter.<br>导入CIImage图片-&gt;创建CIFilter-&gt;用CIContext将滤镜中的图片渲染出来-&gt;导出并显示图片.  </li>
-<li><p>使用CoreImage+OpenGL ES实现filter.<br>获取OpenGL ES渲染的context-&gt;创建渲染buffer-&gt;创建CoreImage使用的CIContext-&gt;设置CoreImage-&gt;渲染图片.  </p>
-</li>
-<li><p>使用OpenGL ES绘制已有图片.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">创建并添加GLKView到view, 调用[_glkView bindDrawable];和[_glkView display];  </span><br><span class="line">绘制长方形(通过vertex), 启用颜色.  </span><br><span class="line">启用vertex贴图坐标:  </span><br><span class="line">	glEnableVertexAttribArray(GLKVertexAttribTexCoord0);  </span><br><span class="line">   	glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, texCoords);  </span><br><span class="line">   	// 因为读取图片信息的时候默认是从图片左上角读取的, 而OpenGL绘制却是从左下角开始的.所以我们要从左下角开始读取图片数据.  </span><br><span class="line">   	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:@(YES), GLKTextureLoaderOriginBottomLeft, nil];  </span><br><span class="line">   	GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithCGImage:image.CGImage options:options error:nil];  </span><br><span class="line">   创建并设置GLKBaseEffect:  </span><br><span class="line">   GLKBaseEffect *baseEffect = [[GLKBaseEffect alloc] init];  </span><br><span class="line">   // 创建一个二维的投影矩阵, 即定义一个视野区域(镜头看到的东西)  </span><br><span class="line">   // GLKMatrix4MakeOrtho(float left, float right, float bottom, float top, float nearZ, float farZ)  </span><br><span class="line">   baseEffect.transform.projectionMatrix = GLKMatrix4MakeOrtho(-1, 1, -1, 1, -1, 1);  </span><br><span class="line">   baseEffect.texture2d0.name = textureInfo.name;  </span><br><span class="line">   [baseEffect prepareToDraw];  </span><br><span class="line">   // 最后绘制图片  </span><br><span class="line">   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用CGContextRef等绘制图片:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CGContextRef context = UIGraphicsGetCurrentContext();  </span><br><span class="line">CGImageRef image = CGImageRetain([[UIImage imageNamed:@&quot;testImage.png&quot;] CGImage]);  </span><br><span class="line">CGContextDrawImage(context, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height), image);  </span><br><span class="line">在图片上使用画笔:  </span><br><span class="line">先通过touchesMoved等方法将划过的点(调用UITouch的locationInView方法取得CGPoint)存入_linesCompleted中, 然后在drawRect中:  </span><br><span class="line">CGContextSetLineWidth(context, 5.0);</span><br><span class="line">CGContextSetLineCap(context, kCGLineCapRound);</span><br><span class="line">CGContextSetRGBStrokeColor(context, 0.5, 0.5, 0.5, 0.5);</span><br><span class="line">for (Line *l in _linesCompleted) &#123;</span><br><span class="line">    CGContextMoveToPoint(context, l.begin.x, l.begin.y);</span><br><span class="line">    CGContextAddLineToPoint(context, l.end.x, l.end.y);</span><br><span class="line">    CGContextStrokePath(context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1352344-951ae5defd30e08e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-2b190e2bab9a77d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>###存储着色器的使用<br>着色器有以下分类：<br>• 单位着色器<br>• 平面着色器<br>• 上色着色器<br>• 默认光源着色器<br>• 点光源着色器<br>• 纹理替换矩阵<br>• 纹理调整着色器<br> • 纹理光源着色器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//定义着色器</span><br><span class="line">GLShaderMananger shaderManager;</span><br><span class="line">//初始化着色器 </span><br><span class="line">shaderManager.InitalizeStockShaders()</span><br><span class="line">//使用</span><br><span class="line">shaderManager userStockManager(参数列表)</span><br></pre></td></tr></table></figure></p>
+<p>#####单位着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_ATTRIBUTE_VERTEX,GLfloat vColor[4]);</p>
+</blockquote>
+<p>#####平面着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_SHADER_FLAT,GLfloat mvp[16],GLfloat vColor[4]);</p>
+</blockquote>
+<p>#####上色着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_SHADER_SHADED,GLfloat mvp[16]);</p>
+</blockquote>
+<p>#####默认光源着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_SHADER_DEFAULT_LIGHT,GLfloat mvMatrix[16],GLfloat pMatrix[16],GLfloat vColor[4]);</p>
+</blockquote>
+<p>#####点光源着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_SHADER_DEFAULT_LIGHT_DIEF,GLfloat mvMatrix[16],GLfloat pMatrix[16],GLfloat vLightPos[3],GLfloat vColor[4]);</p>
+</blockquote>
+<p>#####纹理替换矩阵着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_SHADER_TEXTURE_REPLACE,GLfloat mvMatrix[16],GLint nTextureUnit);</p>
+</blockquote>
+<p>#####纹理调整着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_SHADER_TEXTURE_MODULATE,GLfloat mvMatrix[16],GLfloat vColor[4],GLint nTextureUnit);</p>
+</blockquote>
+<p>#####纹理光源着色器</p>
+<blockquote>
+<p>GLShaderManager::UserStockShader(GLT_SHADER_TEXTURE_POINT_LIGHT_DIEF,GLfloat mvMatrix[16],GLfloat pMatrix[16],GLfloat vLightPos[3],GLfloat vBaseColor[4],GLint nTextureUnit);</p>
+</blockquote>
+<p>###绘制不同类型的图元<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 各种需要的类</span><br><span class="line">GLShaderManager		shaderManager;</span><br><span class="line">GLMatrixStack		modelViewMatrix;</span><br><span class="line">GLMatrixStack		projectionMatrix;</span><br><span class="line">GLFrame				cameraFrame;</span><br><span class="line">GLFrame             objectFrame;</span><br><span class="line">//投影矩阵</span><br><span class="line">GLFrustum			viewFrustum;</span><br><span class="line"></span><br><span class="line">//容器类（7种不同的图元对应7种容器对象）</span><br><span class="line">GLBatch				pointBatch;</span><br><span class="line">GLBatch				lineBatch;</span><br><span class="line">GLBatch				lineStripBatch;</span><br><span class="line">GLBatch				lineLoopBatch;</span><br><span class="line">GLBatch				triangleBatch;</span><br><span class="line">GLBatch             triangleStripBatch;</span><br><span class="line">GLBatch             triangleFanBatch;</span><br><span class="line"></span><br><span class="line">//几何变换的管道</span><br><span class="line">GLGeometryTransform	transformPipeline;</span><br><span class="line">M3DMatrix44f		shadowMatrix;</span><br></pre></td></tr></table></figure></p>
+<p>######点/线/线段/线环绘制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 准备一些随机点数据</span><br><span class="line">    GLfloat vCoast[24][3] = &#123;</span><br><span class="line">        &#123;2.80, 1.20, 0.0 &#125;, &#123;2.0,  1.20, 0.0 &#125;,</span><br><span class="line">        &#123;2.0,  1.08, 0.0 &#125;,  &#123;2.0,  1.08, 0.0 &#125;,</span><br><span class="line">        &#123;0.0,  0.80, 0.0 &#125;,  &#123;-.32, 0.40, 0.0 &#125;,</span><br><span class="line">        &#123;-.48, 0.2, 0.0 &#125;,   &#123;-.40, 0.0, 0.0 &#125;,</span><br><span class="line">        &#123;-.60, -.40, 0.0 &#125;,  &#123;-.80, -.80, 0.0 &#125;,</span><br><span class="line">        &#123;-.80, -1.4, 0.0 &#125;,  &#123;-.40, -1.60, 0.0 &#125;,</span><br><span class="line">        &#123;0.0, -1.20, 0.0 &#125;,  &#123; .2, -.80, 0.0 &#125;,</span><br><span class="line">        &#123;.48, -.40, 0.0 &#125;,   &#123;.52, -.20, 0.0 &#125;,</span><br><span class="line">        &#123;.48,  .20, 0.0 &#125;,   &#123;.80,  .40, 0.0 &#125;,</span><br><span class="line">        &#123;1.20, .80, 0.0 &#125;,   &#123;1.60, .60, 0.0 &#125;,</span><br><span class="line">        &#123;2.0, .60, 0.0 &#125;,    &#123;2.2, .80, 0.0 &#125;,</span><br><span class="line">        &#123;2.40, 1.0, 0.0 &#125;,   &#123;2.80, 1.0, 0.0 &#125;&#125;;</span><br><span class="line">    </span><br><span class="line">    //用点的形式绘制(GL_POINTS)</span><br><span class="line">    pointBatch.Begin(GL_POINTS, 24);</span><br><span class="line">    pointBatch.CopyVertexData3f(vCoast);</span><br><span class="line">    pointBatch.End();</span><br><span class="line">    </span><br><span class="line">    //通过线的形式绘制(GL_LINES)</span><br><span class="line">    lineBatch.Begin(GL_LINES, 24);</span><br><span class="line">    lineBatch.CopyVertexData3f(vCoast);</span><br><span class="line">    lineBatch.End();</span><br><span class="line">    </span><br><span class="line">    //通过线段的形式绘制(GL_LINE_STRIP)</span><br><span class="line">    lineStripBatch.Begin(GL_LINE_STRIP, 24);</span><br><span class="line">    lineStripBatch.CopyVertexData3f(vCoast);</span><br><span class="line">    lineStripBatch.End();</span><br><span class="line">    </span><br><span class="line">    //通过线环的形式绘制(GL_LINE_LOOP)</span><br><span class="line">    lineLoopBatch.Begin(GL_LINE_LOOP, 24);</span><br><span class="line">    lineLoopBatch.CopyVertexData3f(vCoast);</span><br><span class="line">    lineLoopBatch.End();</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>效果如下:<br><img src="http://upload-images.jianshu.io/upload_images/1352344-87c38db647e2b147.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-eb10ff26489d89cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-1a6b500d7b7ca0b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线段.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-bb161975a6a3e483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线环.png"></li>
+</ul>
+<p>######三角形绘制方式 - GL_TRIANGLES<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    //通过三角形绘制(GL_TRIANGLES) -- 生成一个金字塔的形状</span><br><span class="line">    GLfloat vPyramid[12][3] = &#123;</span><br><span class="line">        -2.0f, 0.0f, -2.0f,</span><br><span class="line">        2.0f, 0.0f, -2.0f,</span><br><span class="line">        0.0f, 4.0f, 0.0f,</span><br><span class="line">        </span><br><span class="line">        2.0f, 0.0f, -2.0f,</span><br><span class="line">        2.0f, 0.0f, 2.0f,</span><br><span class="line">        0.0f, 4.0f, 0.0f,</span><br><span class="line">        </span><br><span class="line">        2.0f, 0.0f, 2.0f,</span><br><span class="line">        -2.0f, 0.0f, 2.0f,</span><br><span class="line">        0.0f, 4.0f, 0.0f,</span><br><span class="line">        </span><br><span class="line">        -2.0f, 0.0f, 2.0f,</span><br><span class="line">        -2.0f, 0.0f, -2.0f,</span><br><span class="line">        0.0f, 4.0f, 0.0f&#125;;</span><br><span class="line">    </span><br><span class="line">    //GL_TRIANGLES 每3个顶点定义一个新的三角形</span><br><span class="line">    triangleBatch.Begin(GL_TRIANGLES, 12);</span><br><span class="line">    triangleBatch.CopyVertexData3f(vPyramid);</span><br><span class="line">    triangleBatch.End();</span><br><span class="line">```    </span><br><span class="line">* 效果图:</span><br><span class="line">![GL_TRIANGLES.png](http://upload-images.jianshu.io/upload_images/1352344-a577c287b2f55072.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">######三角形扇绘制方式 - GL_TRIANGLE_FAN</span><br></pre></td></tr></table></figure></p>
+<pre><code>// 三角形扇绘制(GL_TRIANGLE_FAN) -- 生成一个六边形
+GLfloat vPoints[100][3];    //超过我们需要的数组
+int nVerts = 0;
+//半径
+GLfloat r = 3.0f;
+
+//原点(x,y,z) = (0,0,0);
+vPoints[nVerts][0] = 0.0f;
+vPoints[nVerts][1] = 0.0f;
+vPoints[nVerts][2] = 0.0f;
+
+//M3D_2PI 就是2Pi 的意思，就一个圆的意思。 绘制圆形
+
+for(GLfloat angle = 0; angle &lt; M3D_2PI; angle += M3D_2PI / 6.0f) {
+
+    //数组下标自增（每自增1次就表示一个顶点）
+    nVerts++;
+    /*
+     弧长=半径*角度,这里的角度是弧度制,不是平时的角度制
+     既然知道了cos值,那么角度=arccos,求一个反三角函数就行了
+     */
+    //x点坐标 cos(angle) * 半径
+    vPoints[nVerts][0] = float(cos(angle)) * r;
+    //y点坐标 sin(angle) * 半径
+    vPoints[nVerts][1] = float(sin(angle)) * r;
+    //z点的坐标
+    vPoints[nVerts][2] = -0.5f;
+}
+
+// 结束扇形 : 前面一共绘制7个顶点（包括圆心）
+printf(&quot;三角形扇形顶点数:%d\n&quot;,nVerts);
+//添加闭合的终点, 若不添加, 则三角形扇形是无法闭合的。
+nVerts++;
+vPoints[nVerts][0] = r;
+vPoints[nVerts][1] = 0;
+vPoints[nVerts][2] = 0.0f;
+
+//GL_TRIANGLE_FAN 以一个圆心为中心呈扇形排列，共用相邻顶点的一组三角形
+triangleFanBatch.Begin(GL_TRIANGLE_FAN, 8);
+triangleFanBatch.CopyVertexData3f(vPoints);
+triangleFanBatch.End();
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 效果图:</span><br><span class="line">![GL_TRIANGLE_FAN.png](http://upload-images.jianshu.io/upload_images/1352344-ec20836c62236f9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">######三角形条带绘制方式 - GL_TRIANGLE_STRIP</span><br></pre></td></tr></table></figure>
+<pre><code>//三角形条带绘制(GL_TRIANGLE_STRIP) -- 生成一个小环或圆柱段
+//顶点下标
+int iCounter = 0;
+//半径
+GLfloat radius = 3.0f;
+//从0度~360度，以0.3弧度为步长
+for(GLfloat angle = 0.0f; angle &lt;= (2.0f*M3D_PI); angle += 0.3f)
+{
+    //或许圆形的顶点的X,Y
+    GLfloat x = radius * sin(angle);
+    GLfloat y = radius * cos(angle);
+
+    //绘制2个三角形（他们的x,y顶点一样，只是z点不一样）
+    vPoints[iCounter][0] = x;
+    vPoints[iCounter][1] = y;
+    vPoints[iCounter][2] = -0.5;
+    iCounter++;
+
+    vPoints[iCounter][0] = x;
+    vPoints[iCounter][1] = y;
+    vPoints[iCounter][2] = 0.5;
+    iCounter++;
+}
+
+// 关闭循环
+printf(&quot;三角形带的顶点数：%d\n&quot;,iCounter);
+//结束循环，在循环位置生成2个三角形
+vPoints[iCounter][0] = vPoints[0][0];
+vPoints[iCounter][1] = vPoints[0][1];
+vPoints[iCounter][2] = -0.5;
+iCounter++;
+
+vPoints[iCounter][0] = vPoints[1][0];
+vPoints[iCounter][1] = vPoints[1][1];
+vPoints[iCounter][2] = 0.5;
+iCounter++;
+
+// GL_TRIANGLE_STRIP 共用一个条带（strip）上的顶点的一组三角形
+triangleStripBatch.Begin(GL_TRIANGLE_STRIP, iCounter);
+triangleStripBatch.CopyVertexData3f(vPoints);
+triangleStripBatch.End();
+</code></pre><p><code>`</code></p>
+<ul>
+<li>效果图:<br><img src="http://upload-images.jianshu.io/upload_images/1352344-d9379cfb0623895f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GL_TRIANGLE_STRIP.png"></li>
+</ul>
 
       
     </div>
@@ -476,7 +596,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/opengles/" rel="tag"><i class="fa fa-tag"></i> opengles</a>
+            <a href="/tags/opengl/" rel="tag"><i class="fa fa-tag"></i> opengl</a>
           
         </div>
       
@@ -489,8 +609,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/19/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/" rel="next" title="OpenGL(四)-两种方式实现抗锯齿效果">
+                <i class="fa fa-chevron-left"></i> OpenGL(四)-两种方式实现抗锯齿效果
               </a>
             
           </div>
@@ -498,6 +618,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/20/OpenGL(六)-坐标系统/" rel="prev" title="OpenGL(六)-坐标系统">
+                OpenGL(六)-坐标系统 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -549,8 +673,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -567,7 +700,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -655,6 +788,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenGL与着色器"><span class="nav-number">1.</span> <span class="nav-text">OpenGL与着色器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本图元类型"><span class="nav-number">2.</span> <span class="nav-text">基本图元类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -696,7 +845,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.1k字</span>
+  <span class="post-count">博客全站共8.8k字</span>
 </div>
 
         

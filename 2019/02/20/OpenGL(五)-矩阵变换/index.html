@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT, sober, soober, blog, iOS">
+  <meta name="keywords" content="opengl,">
 
 
 
@@ -86,16 +86,20 @@
 
 
 
-<meta name="description" content="GET SOBER. STAY SOBER.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sober&#39;s Notes">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="##关键函数讲解 ###平移123456789101112//创建单元矩阵 M3DMatrix44f m3;m3dLoadIdentity44(m3);/*  m3dTranslationMatrix44(M3DMatrix44f m, float x, float y, float z) 参数1:结果矩阵,平移之后的结果矩阵 参数2:沿着X轴移动多少,正数\负数 参数3:沿着Y轴移动多少,正数\">
+<meta name="keywords" content="opengl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL(五)-矩阵变换">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/OpenGL(五)-矩阵变换/index.html">
 <meta property="og:site_name" content="Sober&#39;s Notes">
-<meta property="og:description" content="GET SOBER. STAY SOBER.">
+<meta property="og:description" content="##关键函数讲解 ###平移123456789101112//创建单元矩阵 M3DMatrix44f m3;m3dLoadIdentity44(m3);/*  m3dTranslationMatrix44(M3DMatrix44f m, float x, float y, float z) 参数1:结果矩阵,平移之后的结果矩阵 参数2:沿着X轴移动多少,正数\负数 参数3:沿着Y轴移动多少,正数\">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-71ca2511e968e7d8.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-02-21T09:11:52.267Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sober&#39;s Notes">
-<meta name="twitter:description" content="GET SOBER. STAY SOBER.">
+<meta name="twitter:title" content="OpenGL(五)-矩阵变换">
+<meta name="twitter:description" content="##关键函数讲解 ###平移123456789101112//创建单元矩阵 M3DMatrix44f m3;m3dLoadIdentity44(m3);/*  m3dTranslationMatrix44(M3DMatrix44f m, float x, float y, float z) 参数1:结果矩阵,平移之后的结果矩阵 参数2:沿着X轴移动多少,正数\负数 参数3:沿着Y轴移动多少,正数\">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1352344-71ca2511e968e7d8.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -125,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/OpenGL(五)-矩阵变换/">
 
 
 
 
 
-  <title>归档 | Sober's Notes</title>
+  <title>OpenGL(五)-矩阵变换 | Sober's Notes</title>
   
 
 
@@ -150,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -286,317 +290,343 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(五)-矩阵变换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">OpenGL(五)-矩阵变换</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 8 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(一)-初识OpenGL及其在Mac上的环境搭建</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(上)/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(七)-纹理(上)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <p>##关键函数讲解</p>
+<p>###平移<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//创建单元矩阵 </span><br><span class="line">M3DMatrix44f m3;</span><br><span class="line">m3dLoadIdentity44(m3);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  m3dTranslationMatrix44(M3DMatrix44f m, float x, float y, float z)</span><br><span class="line"> 参数1:结果矩阵,平移之后的结果矩阵</span><br><span class="line"> 参数2:沿着X轴移动多少,正数\负数</span><br><span class="line"> 参数3:沿着Y轴移动多少,正数\负数</span><br><span class="line"> 参数4:沿着Z轴移动多少,正数\负数</span><br><span class="line"> */</span><br><span class="line">m3dTranslationMatrix44(m3, 0.0f, 10.0f, 0.0f);</span><br></pre></td></tr></table></figure></p>
+ <a id="more"></a>
+<p>###旋转<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    /*</span><br><span class="line">      m3dRotationMatrix44(M3DMatrix44f m, float angle, float x, float y, float z);</span><br><span class="line">     参数1:结果矩阵,旋转之后的结果矩阵</span><br><span class="line">     参数2:旋转多少弧度</span><br><span class="line">     参数3:是否围绕X轴旋转,是(1),不是(0)</span><br><span class="line">     参数4:是否围绕Y轴旋转,是(1),不是(0)</span><br><span class="line">     参数5:是否围绕Z轴旋转,是(1),不是(0)</span><br><span class="line">     */</span><br><span class="line">    m3dRotationMatrix44(m3, m3dDegToRad(45.0f), 1.0f, 0.0f, 0.0f);</span><br><span class="line">```     </span><br><span class="line">###缩放</span><br></pre></td></tr></table></figure></p>
+<pre><code>/*
+ void m3dScaleMatrix44(M3DMatrix44f m, float xScale, float yScale, float zScale)
+ 参数1:结果矩阵
+ 参数2:围绕X轴放大\缩小;放大x&gt;1,缩小:0.5f
+ 参数3:围绕Y轴放大\缩小;放大x&gt;1,缩小:0.5f
+ 参数4:围绕Z轴放大\缩小;放大x&gt;1,缩小:0.5f
+ */
+m3dScaleMatrix44(m3, 1.0f, 10.0f, 1.0f);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##案例1 : 利用矩阵的平移、旋转、综合变化等, 实现矩阵的移动.</span><br></pre></td></tr></table></figure>
+<p>GLBatch    squareBatch;<br>GLfloat blockSize = 0.1f;<br>GLfloat vVerts[] = {<br>    -blockSize, -blockSize, 0.0f,<br>    blockSize, -blockSize, 0.0f,<br>    blockSize,  blockSize, 0.0f,<br>    -blockSize,  blockSize, 0.0f};</p>
+<p>GLfloat xPos = 0.0f;<br>GLfloat yPos = 0.0f;</p>
+<p>void SetupRC()<br>{<br>    //背景颜色<br>    glClearColor(0.0f, 0.0f, 1.0f, 1.0f );</p>
+<pre><code>shaderManager.InitializeStockShaders();
 
-        
-        
+// 加载矩形
+squareBatch.Begin(GL_TRIANGLE_FAN, 4);
+squareBatch.CopyVertexData3f(vVerts);
+squareBatch.End();
+</code></pre><p>}</p>
+<p>//移动（移动只是计算了X,Y移动的距离，以及碰撞检测）<br>void SpecialKeys(int key, int x, int y)<br>{<br>    GLfloat stepSize = 0.025f;</p>
+<pre><code>if(key == GLUT_KEY_UP)
+    yPos += stepSize;
 
-        
+if(key == GLUT_KEY_DOWN)
+    yPos -= stepSize;
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+if(key == GLUT_KEY_LEFT)
+    xPos -= stepSize;
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(三)-深度测试/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(三)-深度测试</span>
-              
-            </a>
-        
-      </h2>
+if(key == GLUT_KEY_RIGHT)
+    xPos += stepSize;
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
+// 碰撞检测
+if(xPos &lt; (-1.0f + blockSize)) xPos = -1.0f + blockSize;
 
-    </header>
-  </article>
+if(xPos &gt; (1.0f - blockSize)) xPos = 1.0f - blockSize;
+
+if(yPos &lt; (-1.0f + blockSize))  yPos = -1.0f + blockSize;
+
+if(yPos &gt; (1.0f - blockSize)) yPos = 1.0f - blockSize;
+
+// 每次操作方向键之后, 重新调用RenderScene进行新的场景渲染
+glutPostRedisplay();
+</code></pre><p>}</p>
+<p>void RenderScene(void)<br>{</p>
+<pre><code>glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+GLfloat vRed[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+
+//!!!矩阵变化 - 关键代码!!!
+M3DMatrix44f mFinalTransform, mTranslationMatrix, mRotationMatrix;
+
+//平移 xPos,yPos
+m3dTranslationMatrix44(mTranslationMatrix, xPos, yPos, 0.0f);
+
+// 每次重绘时，旋转5度
+static float yRot = 0.0f;
+yRot += 5.0f;
+m3dRotationMatrix44(mRotationMatrix, m3dDegToRad(yRot), 0.0f, 0.0f, 1.0f);
+
+//将旋转和移动的结果合并到mFinalTransform 中
+m3dMatrixMultiply44(mFinalTransform, mTranslationMatrix, mRotationMatrix);
+
+//将矩阵结果提交到固定着色器（平面着色器）中。
+shaderManager.UseStockShader(GLT_SHADER_FLAT, mFinalTransform, vRed);
+
+//!!!矩形重新绘制, 即会出现一个既平移了方向又旋转了角度的新矩形
+squareBatch.Draw();
+
+// 执行缓冲区交换
+glutSwapBuffers();
+</code></pre><p>}</p>
+<p>void ChangeSize(int w, int h)<br>{<br>    glViewport(0, 0, w, h);<br>}</p>
+<p>int main(int argc, char* argv[])<br>{<br>    gltSetWorkingDirectory(argv[0]);</p>
+<pre><code>glutInit(&amp;argc, argv);
+glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+glutInitWindowSize(600, 600);
+glutCreateWindow(&quot;Move Block with Arrow Keys&quot;);
+
+GLenum err = glewInit();
+if (GLEW_OK != err)
+{
+
+    fprintf(stderr, &quot;Error: %s\n&quot;, glewGetErrorString(err));
+    return 1;
+}
 
 
+glutReshapeFunc(ChangeSize);//设置视口大小
+glutDisplayFunc(RenderScene);//渲染场景
+glutSpecialFunc(SpecialKeys);//键盘方向键操作
+
+SetupRC();
+
+glutMainLoop();
+return 0;
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">###效果图:</span><br><span class="line">注: 本例是键盘的上下左右方向键来控制矩形的旋转平移, 具体代码参见上面</span><br><span class="line">![利用矩阵变换实现模型变化.gif](http://upload-images.jianshu.io/upload_images/1352344-c8e919beceac3928.gif?imageMogr2/auto-orient/strip)</span><br><span class="line"></span><br><span class="line">##案例2 : 利用模型视图矩阵和投影矩阵让一个球体旋转</span><br><span class="line">###### 绘制球体</span><br></pre></td></tr></table></figure>
+<pre><code>gltMakeSphere(torusBatch, 0.4f, 10, 20);
+
+glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">###### 设置模型视图矩阵 和 投影矩阵</span><br></pre></td></tr></table></figure>
+<pre><code>//建立一个基于时间变化的动画
+static CStopWatch rotTimer;
+
+//当前时间 * 60s
+float yRot = rotTimer.GetElapsedSeconds() * 60.0f;
+
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+//矩阵变量
+M3DMatrix44f mTranlate,mRotate,mModelView,mModelViewProjection;
+
+//将圆球像Z轴负方向移动2.5个单位长度
+m3dTranslationMatrix44(mTranlate, 0.0f , 0.0f,-2.5f);
+
+//旋转
+m3dRotationMatrix44(mRotate, m3dDegToRad(yRot), 0.0f, 1.0f, 0.0f);
+
+//将平移和旋转的矩阵进行叉乘,产生一个新的矩阵mModelView
+m3dMatrixMultiply44(mModelView, mTranlate, mRotate);
+
+//模型视图矩阵 和 投影矩阵
+//将投影矩阵 与 模型视图矩阵进行叉乘 ,将变化最终结果通过矩阵叉乘的方式应用到mModelViewProjection中来
+m3dMatrixMultiply44(mModelViewProjection, viewFrustum.GetProjectionMatrix(), mModelView);
+
+GLfloat vBlack[] = {0.0f,0.0f,0.0f,1.0f};
+
+//平面着色器来渲染图像
+shaderManager.UseStockShader(GLT_SHADER_FLAT,mModelViewProjection,vBlack);
+
+//开始绘图
+torusBatch.Draw();
+
+glutSwapBuffers();
+glutPostRedisplay();
+</code></pre><p><code>`</code></p>
+<h6 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h6><p><img src="https://upload-images.jianshu.io/upload_images/1352344-71ca2511e968e7d8.gif?imageMogr2/auto-orient/strip" alt="ModelViewProjection.gif"></p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(七)-纹理(下)/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(七)-纹理(下)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(五)-矩阵变换/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(五)-矩阵变换</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(六)-坐标系统/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(六)-坐标系统</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(二)-基本图元绘制/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(二)-基本图元绘制</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/OpenGL(四)-两种方式实现抗锯齿效果/" itemprop="url">
-              
-                <span itemprop="name">OpenGL(四)-两种方式实现抗锯齿效果</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T00:38:36+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你赏我糖果吃</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.jpg" alt="Sober 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Sober 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/opengl/" rel="tag"><i class="fa fa-tag"></i> opengl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/20/OpenGL(六)-坐标系统/" rel="next" title="OpenGL(六)-坐标系统">
+                <i class="fa fa-chevron-left"></i> OpenGL(六)-坐标系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/20/OpenGL(七)-纹理(下)/" rel="prev" title="OpenGL(七)-纹理(下)">
+                OpenGL(七)-纹理(下) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -604,6 +634,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -624,8 +658,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -729,6 +772,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#效果图"><span class="nav-number">1.</span> <span class="nav-text">效果图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -877,6 +936,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
