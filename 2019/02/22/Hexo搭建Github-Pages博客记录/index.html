@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="opengl,">
+  <meta name="keywords" content="hexo,next,">
 
 
 
@@ -86,26 +86,28 @@
 
 
 
-<meta name="description" content="OpenGL是一种用于创建实时3D图像的编程接口。 走向3D三维(3D)表示一个正在描述或显示的物体具有三个维度：宽度，高度，深度。几个世纪以来，艺术家们已经知道如何让一幅画有立体感并具有真实感的深度，通过颜料在二维画布上创作的作品，它其实本质上画的是一个二维物体。类似，计算机3D图像实质上也是平面的，它只是在计算机屏幕上所显示的二维图像，但它可以提供深度的错觉。实际上如果我们需要一个物体的二维画">
-<meta name="keywords" content="opengl">
+<meta name="description" content="Hexo搭建Github-Pages博客记录一直都很想搭一个自己的博客, 但一直很忙(其实是懒)没弄, 最近终于搭建好了, 过程中也遇到了一些问题, 写个流水账记录下. 准备工作 一个github账号 安装了node.js, npm, git (mac用户的安装xcode就已经装好git了)  搭建github博客创建仓库新建一个用户名.github.io的仓库, 用户名必须为你的github用户">
+<meta name="keywords" content="hexo,next">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenGL(一)-初识OpenGL及其在Mac上的环境搭建">
-<meta property="og:url" content="http://yoursite.com/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/index.html">
+<meta property="og:title" content="Hexo搭建Github-Pages博客记录">
+<meta property="og:url" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/index.html">
 <meta property="og:site_name" content="Sober&#39;s Notes">
-<meta property="og:description" content="OpenGL是一种用于创建实时3D图像的编程接口。 走向3D三维(3D)表示一个正在描述或显示的物体具有三个维度：宽度，高度，深度。几个世纪以来，艺术家们已经知道如何让一幅画有立体感并具有真实感的深度，通过颜料在二维画布上创作的作品，它其实本质上画的是一个二维物体。类似，计算机3D图像实质上也是平面的，它只是在计算机屏幕上所显示的二维图像，但它可以提供深度的错觉。实际上如果我们需要一个物体的二维画">
+<meta property="og:description" content="Hexo搭建Github-Pages博客记录一直都很想搭一个自己的博客, 但一直很忙(其实是懒)没弄, 最近终于搭建好了, 过程中也遇到了一些问题, 写个流水账记录下. 准备工作 一个github账号 安装了node.js, npm, git (mac用户的安装xcode就已经装好git了)  搭建github博客创建仓库新建一个用户名.github.io的仓库, 用户名必须为你的github用户">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-5358667d6261f7e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-73ff1a7fcb49fef6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-2f880bdd4e00a0e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-fcaa75976efdbcce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-dad3e8f2ca20c0cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-5c25945dbdf5aa8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1352344-769e8ae14cbfb195.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-21T09:59:43.161Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508082680623.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508085025001.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508088827978.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508100902935.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508102174617.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508106063754.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508078479661.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508092760940.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508093835377.jpg">
+<meta property="og:updated_time" content="2019-02-22T07:00:20.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenGL(一)-初识OpenGL及其在Mac上的环境搭建">
-<meta name="twitter:description" content="OpenGL是一种用于创建实时3D图像的编程接口。 走向3D三维(3D)表示一个正在描述或显示的物体具有三个维度：宽度，高度，深度。几个世纪以来，艺术家们已经知道如何让一幅画有立体感并具有真实感的深度，通过颜料在二维画布上创作的作品，它其实本质上画的是一个二维物体。类似，计算机3D图像实质上也是平面的，它只是在计算机屏幕上所显示的二维图像，但它可以提供深度的错觉。实际上如果我们需要一个物体的二维画">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1352344-5358667d6261f7e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Hexo搭建Github-Pages博客记录">
+<meta name="twitter:description" content="Hexo搭建Github-Pages博客记录一直都很想搭一个自己的博客, 但一直很忙(其实是懒)没弄, 最近终于搭建好了, 过程中也遇到了一些问题, 写个流水账记录下. 准备工作 一个github账号 安装了node.js, npm, git (mac用户的安装xcode就已经装好git了)  搭建github博客创建仓库新建一个用户名.github.io的仓库, 用户名必须为你的github用户">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/media/15508045823241/15508082680623.jpg">
 
 
 
@@ -135,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/">
 
 
 
 
 
-  <title>OpenGL(一)-初识OpenGL及其在Mac上的环境搭建 | Sober's Notes</title>
+  <title>Hexo搭建Github-Pages博客记录 | Sober's Notes</title>
   
 
 
@@ -310,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/OpenGL(一)-初识OpenGL及其在Mac上的环境搭建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/22/Hexo搭建Github-Pages博客记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sober">
@@ -327,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OpenGL(一)-初识OpenGL及其在Mac上的环境搭建</h1>
+          <h1 class="post-title" itemprop="name headline">Hexo搭建Github-Pages博客记录</h1>
         
 
         <div class="post-meta">
@@ -339,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T00:38:36+08:00">
-                2019-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-22T15:00:37+08:00">
+                2019-02-22
               </time>
             
 
@@ -362,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/利器/" itemprop="url" rel="index">
+                    <span itemprop="name">利器</span>
                   </a>
                 </span>
 
@@ -399,40 +401,64 @@
       
 
       
-        <p>OpenGL是一种用于创建实时3D图像的编程接口。</p>
-<h2 id="走向3D"><a href="#走向3D" class="headerlink" title="走向3D"></a>走向3D</h2><p>三维(3D)表示一个正在描述或显示的物体具有三个维度：宽度，高度，深度。几个世纪以来，艺术家们已经知道如何让一幅画有立体感并具有真实感的深度，通过颜料在二维画布上创作的作品，它其实本质上画的是一个二维物体。类似，计算机3D图像实质上也是平面的，它只是在计算机屏幕上所显示的二维图像，但它可以提供深度的错觉。实际上如果我们需要一个物体的二维画面从不同角度上感知三维空间，我们可以通过透视、隐藏直线消除、颜色、着色和其他技巧来创建深度幻觉。</p>
-<blockquote>
-<p>2D + 透视 = 3D</p>
-</blockquote>
-<h2 id="3D图形术语"><a href="#3D图形术语" class="headerlink" title="3D图形术语"></a>3D图形术语</h2><ul>
-<li>变化&amp;投影</li>
-<li>光栅化：实际绘制或填充每个顶点之间的像素形成过程</li>
-<li>着色：沿着顶点之间改变颜色值。着色器则是图形硬件上执行的单独程序，用来处理顶点和光栅化任务。</li>
-<li>纹理贴图：初学可以简单理解为贴到图形上的图片（但纹理并不是图片， 二者不等价）。在GPU上，纹理是快捷有效的。</li>
-<li>混合：混合是将不同的颜色混合在一起。<a id="more"></a>
-<h2 id="3D图形的常见用途"><a href="#3D图形的常见用途" class="headerlink" title="3D图形的常见用途"></a>3D图形的常见用途</h2>实时3D图形的应用范围包括交互式游戏和模拟数据的可视化显示（供科学、医学或商业应用）；<br>在计算机领域，3D图形的应用几乎没有止境。目前最常见的用途，游戏、AR、VR，都是基于openGL的。3D图形在科学视觉和工程应用中非常流行，物美价廉的3D硬件大量涌现使得这些应用技术空前的流行火爆。<br><strong>Mac OS X以及iOS都是使用openGL对所有窗口和控件进行渲染，从而创建了功能强大，引人入胜的可视化界面。</strong><br>例如设计使用的3D Max， 游戏制作的Unity 3D， Cocos2D底层都是使用了openGL。医学上的影像渲染也是依托于openGL。<h2 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h2>在实时计算机图形中，最前沿的技术是可编程着色器（Programmable Shading）。图形卡不再是低能的渲染芯片。而是功能强大的高度可编程的渲染计算机。类似CPU的术语GPU应运而生。它代表图形处理单元，特指当今图形卡上的可编程芯片。它们是高度并行，并且具有非常快的速度。同样重要的是， 程序员可以进行重新配置图形卡的工作方式，几乎可以实现任何想要得到的特殊效果。<h2 id="3D编程的基本原则"><a href="#3D编程的基本原则" class="headerlink" title="3D编程的基本原则"></a>3D编程的基本原则</h2></li>
+        <h1 id="Hexo搭建Github-Pages博客记录"><a href="#Hexo搭建Github-Pages博客记录" class="headerlink" title="Hexo搭建Github-Pages博客记录"></a>Hexo搭建Github-Pages博客记录</h1><p>一直都很想搭一个自己的博客, 但一直很忙(其实是懒)没弄, 最近终于搭建好了, 过程中也遇到了一些问题, 写个流水账记录下.</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>一个github账号</li>
+<li>安装了<code>node.js</code>, <code>npm</code>, <code>git</code> (mac用户的安装xcode就已经装好git了)</li>
 </ul>
-<ol>
-<li>并发工具包<br>openGL基于一种底层渲染API，我们不能告诉它“在什么地方绘制”， 而是我们需要自己动手，通过载入三角形，应用必要的变化和正确的纹理、着色器并在必要应用混合模式来组合一个模型。<strong>这使得我们能够进行大量的底层控制，与使用高层工具包相比，使用openGL这样的底层API动人之处在于，我们不能仅仅是重现许多标准3D渲染，我们可以创造自己的算法，甚至可以取发现一些新的捷径、性能技巧和艺术视觉技术</strong>。</li>
-<li>坐标系统<br>在openGL或几乎所有的3D API中创建一个用于绘图窗口时， 必须制定希望使用的坐标系统以及指定的坐标如何映射到实际的屏幕像素。<h2 id="OpenGL在Mac上的环境搭建"><a href="#OpenGL在Mac上的环境搭建" class="headerlink" title="OpenGL在Mac上的环境搭建"></a>OpenGL在Mac上的环境搭建</h2><h3 id="准备资源"><a href="#准备资源" class="headerlink" title="准备资源"></a>准备资源</h3></li>
-</ol>
+<h1 id="搭建github博客"><a href="#搭建github博客" class="headerlink" title="搭建github博客"></a>搭建github博客</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>新建一个<code>用户名.github.io</code>的仓库, 用户名必须为你的github用户名. 比如我的用户名为soober, 那么需要创建<code>sooober.github.io</code>的仓库.</p>
+<h2 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h2><p>提交代码需要拥有你的github权限, 使用ssh key来解决本地和服务器的连接问题</p>
+<p>用git bash(mac用户, 用终端即可)执行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/. ssh</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
+<p>一路回车(密码可以不用输入,直接回车)最终会生成一个文件在用户目录下，找到.ssh\id_rsa.pub文件，复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key, 将复制的内容粘贴到key那里，title自己写一个，保存。<br><img src="media/15508045823241/15508082680623.jpg" alt><br><img src="media/15508045823241/15508085025001.jpg" alt></p>
 <ul>
-<li>CLTools</li>
-<li>glew</li>
-<li>libGLTools.a<br>这些资源都可以从网上下载到<h3 id="配置Xcode的openGL环境"><a href="#配置Xcode的openGL环境" class="headerlink" title="配置Xcode的openGL环境"></a>配置Xcode的openGL环境</h3></li>
-<li>打开Xcode -&gt; macOS -&gt; Cocoa Application<br><img src="http://upload-images.jianshu.io/upload_images/1352344-5358667d6261f7e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li><p>添加OpenGL.framework 和 GLUT.framework 两个系统库<br><img src="http://upload-images.jianshu.io/upload_images/1352344-73ff1a7fcb49fef6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-</li>
-<li><p>libGLTools.a直接拖到工程的Frameworks文件里面，另外删除文件：AppDelegate.h、AppDelegate.m、main.m、ViewController.h、ViewController.m；创建main.cpp文件<br><img src="http://upload-images.jianshu.io/upload_images/1352344-2f880bdd4e00a0e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-fcaa75976efdbcce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-dad3e8f2ca20c0cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/1352344-5c25945dbdf5aa8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-</li>
-<li><p>在main.cpp中复制以下代码， 来测试环境是否配置成功：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#include <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#include <span class="meta-string">"GLTools.h"</span></span></span><br><span class="line"><span class="meta">#include <span class="meta-string">&lt;GLUT/GLUT.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">GLBatch triangleBatch;</span><br><span class="line"></span><br><span class="line">GLShaderManager shaderManager;</span><br><span class="line"></span><br><span class="line"><span class="comment">//窗口大小改变时接受新的宽度和高度，其中0,0代表窗口中视口的左下角坐标，w，h代表像素</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ChangeSize(<span class="keyword">int</span> w,<span class="keyword">int</span> h)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    glViewport(<span class="number">0</span>,<span class="number">0</span>, w, h);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//为程序作一次性的设置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> SetupRC()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置背影颜色</span></span><br><span class="line">    </span><br><span class="line">    glClearColor(<span class="number">0.0</span>f,<span class="number">0.0</span>f,<span class="number">1.0</span>f,<span class="number">1.0</span>f);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//初始化着色管理器</span></span><br><span class="line">    </span><br><span class="line">    shaderManager.InitializeStockShaders();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置三角形，其中数组vVert包含所有3个顶点的x,y,笛卡尔坐标对。</span></span><br><span class="line">    </span><br><span class="line">    GLfloat vVerts[] = &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="number">-0.5</span>f,<span class="number">0.0</span>f,<span class="number">0.0</span>f,</span><br><span class="line">        </span><br><span class="line">        <span class="number">0.5</span>f,<span class="number">0.0</span>f,<span class="number">0.0</span>f,</span><br><span class="line">        </span><br><span class="line">        <span class="number">0.0</span>f,<span class="number">0.5</span>f,<span class="number">0.0</span>f,</span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//批次处理</span></span><br><span class="line">    </span><br><span class="line">    triangleBatch.Begin(GL_TRIANGLES,<span class="number">3</span>);</span><br><span class="line">    </span><br><span class="line">    triangleBatch.CopyVertexData3f(vVerts);</span><br><span class="line">    </span><br><span class="line">    triangleBatch.End();</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//开始渲染</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> RenderScene(<span class="keyword">void</span>)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//清除一个或一组特定的缓冲区</span></span><br><span class="line">    </span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置一组浮点数来表示红色</span></span><br><span class="line">    </span><br><span class="line">    GLfloat vRed[] = &#123;<span class="number">1.0</span>f,<span class="number">0.0</span>f,<span class="number">0.0</span>f,<span class="number">1.0</span>f&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//传递到存储着色器，即GLT_SHADER_IDENTITY着色器，这个着色器只是使用指定颜色以默认笛卡尔坐标第在屏幕上渲染几何图形</span></span><br><span class="line">    </span><br><span class="line">    shaderManager.UseStockShader(GLT_SHADER_IDENTITY,vRed);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//提交着色器</span></span><br><span class="line">    </span><br><span class="line">    triangleBatch.Draw();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将在后台缓冲区进行渲染，然后在结束时交换到前台</span></span><br><span class="line">    </span><br><span class="line">    glutSwapBuffers();</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置当前工作目录，针对MAC OS X</span></span><br><span class="line">    </span><br><span class="line">    gltSetWorkingDirectory(argv[<span class="number">0</span>]);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//初始化GLUT库</span></span><br><span class="line">    </span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*初始化双缓冲窗口，其中标志GLUT_DOUBLE、GLUT_RGBA、GLUT_DEPTH、GLUT_STENCIL分别指</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     双缓冲窗口、RGBA颜色模式、深度测试、模板缓冲区*/</span></span><br><span class="line">    </span><br><span class="line">    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA|GLUT_DEPTH|GLUT_STENCIL);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//GLUT窗口大小，标题窗口</span></span><br><span class="line">    </span><br><span class="line">    glutInitWindowSize(<span class="number">800</span>,<span class="number">600</span>);</span><br><span class="line">    </span><br><span class="line">    glutCreateWindow(<span class="string">"Triangle"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//注册回调函数</span></span><br><span class="line">    </span><br><span class="line">    glutReshapeFunc(ChangeSize);</span><br><span class="line">    </span><br><span class="line">    glutDisplayFunc(RenderScene);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//驱动程序的初始化中没有出现任何问题。</span></span><br><span class="line">    </span><br><span class="line">    GLenum err = glewInit();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(GLEW_OK != err) &#123;</span><br><span class="line">        </span><br><span class="line">        fprintf(stderr,<span class="string">"glew error:%s\n"</span>,glewGetErrorString(err));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//调用SetupRC</span></span><br><span class="line">    </span><br><span class="line">    SetupRC();</span><br><span class="line">    </span><br><span class="line">    glutMainLoop();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译， 将报错的地方文件<code>&lt;&gt;</code>系统引入， 改为<code>“”</code>普通引入</p>
-<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1352344-769e8ae14cbfb195.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<li>测试SSH配置是否成功<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>那么环境搭建到此就成功了。</p>
+<p>如果看到以下信息,说明配置成功<br><img src="media/15508045823241/15508088827978.jpg" alt></p>
+<h2 id="Hexo框架搭建"><a href="#Hexo框架搭建" class="headerlink" title="Hexo框架搭建"></a>Hexo框架搭建</h2><p>Hexo是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题。<br>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。<br>[官网] (<a href="http://hexo.io" target="_blank" rel="noopener">http://hexo.io</a>)<br>[github] (<a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">https://github.com/hexojs/hexo</a>)</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>选择博客存储位置, 创建hexo文件夹,然后初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd hexo</span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></p>
+<p>hexo会自动下载一些文件到这个目录，包括node_modules，目录结构如下图：<br><img src="media/15508045823241/15508100902935.jpg" alt><br>其中, <code>_config.yml</code>这里面都是一些全局配置，每个参数的意思都比较简单明了，就不作详细介绍了。<br>需要特别注意的地方是，冒号后面必须有一个空格，否则可能会出问题。</p>
+<p>接着生成和启动hexo服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g # 生成</span><br><span class="line">$ hexo s # 启动服务</span><br></pre></td></tr></table></figure></p>
+<p>执行以上命令之后，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去的：<br><img src="media/15508045823241/15508102174617.jpg" alt></p>
+<p><code>hexo s</code>是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可看到博客预览内容(使用<code>ctrl+c</code>结束本地预览)</p>
+<h3 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h3><p>一个好看的主题可以让你的博客看上去赏心悦目, 我选择用了Next主题, 你可以再<a href="https://hexo.io/themes/" target="_blank" rel="noopener">这里</a>选择你喜欢的主题样式</p>
+<p>首先下载这个主题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<p>下载后的主题都在hexo/themes下存放<br><img src="media/15508045823241/15508106063754.jpg" alt></p>
+<p>接着修改hexo根目录<code>_config.yml</code>中的<code>theme: landscape</code>改为<code>theme: next</code>，如下, 然后重新执行<code>hexo g</code>来重新生成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line"># theme: landscape</span><br><span class="line"># theme: yilia</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure></p>
+<p>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下<code>public</code>的内容，然后再重新生成。</p>
+<h3 id="初始化本地git仓库"><a href="#初始化本地git仓库" class="headerlink" title="初始化本地git仓库"></a>初始化本地git仓库</h3><p>如果你的本地仓库还没有进行远程仓库管理,需要进行以下步骤<br>设置Git的user name和email：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name // 你的github用户名，非昵称</span><br><span class="line">$ git config --global user.email // 填写你的github注册邮箱</span><br></pre></td></tr></table></figure></p>
+<p>在本地的hexo init生成的文件夹中初始化git仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure></p>
+<p>将本地仓库和远程仓库连接(这一步貌似可以不做):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:your_github_user_name/your_github_user_name.github.io.git(远程仓库ssh地址)</span><br></pre></td></tr></table></figure></p>
+<p>做完以上这些步骤，说明你的仓库可以使用ssh方式来上传下载代码，而不需要输入用户名和密码了</p>
+<h3 id="网站部署"><a href="#网站部署" class="headerlink" title="网站部署"></a>网站部署</h3><p>首先, 配置hexo根目录<code>_config.yml</code>中有关deploy的部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:soober/soober.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>接着, 安装插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>然后执行发布命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean  //清除缓存文件db.json和已生成的静态文件public</span><br><span class="line">$ hexo g   //生成网站静态文件到默认设置的public文件夹</span><br><span class="line">$ hexo d   //部署网站到设定的仓库</span><br></pre></td></tr></table></figure></p>
+<p>执行这个命令可能会碰到一些问题, 终端里会直接给出修改建议, 我是按照给出的参考命令执行的, 具体问题忘记截图了=-=</p>
+<p>此时你的博客就部署到了page上了, 打开<code>你的用户名.github.io</code>, 即可看到你发布到github的博客了</p>
+<h2 id="常用hexo命令"><a href="#常用hexo命令" class="headerlink" title="常用hexo命令"></a>常用hexo命令</h2><p>常见命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line">hexo deploy #部署到GitHub</span><br><span class="line">hexo help  # 查看帮助</span><br><span class="line">hexo version  #查看Hexo的版本</span><br></pre></td></tr></table></figure></p>
+<p>缩写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>组合命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g #生成并本地预览</span><br><span class="line">hexo d -g #生成并上传</span><br></pre></td></tr></table></figure></p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ul>
+<li>不想绑定域名的可以跳过这一步骤.</li>
+<li>想绑定域名还没有域名的, 可以去阿里或者腾讯注册一个域名, 我是在腾讯买的一个.com域名. <a href="https://cloud.tencent.com/act/domainsales" target="_blank" rel="noopener">传送门-腾讯云</a></li>
+<li>有个域名之后, 进行域名解析.域名解析配置最常见有2种方式，CNAME和A记录，其中CNAME填写域名，A记录填写IP. 获取ip需要你去ping一下<code>你的用户名.github.io</code><br><img src="media/15508045823241/15508078479661.jpg" alt></li>
+</ul>
+<p>(腾讯的需要进行个人身份认证之后才能正常访问域名)</p>
+<ul>
+<li>设置CNAME</li>
+</ul>
+<p>在 hexo 项目下，source 文件夹下面创建 CNAME 文件（没有后缀名的），在里面写上购买的域名<br><img src="media/15508045823241/15508092760940.jpg" alt><br>然后在 github 上面，打开 username.github.io 项目的（Settings）设置，然后在 GitHub Pages的 Custom domain设置里填上购买的域名。比如：<br><img src="media/15508045823241/15508093835377.jpg" alt><br>好了,新域名配置完成，可以访问了</p>
+<h1 id="一些报错处理"><a href="#一些报错处理" class="headerlink" title="一些报错处理"></a>一些报错处理</h1><blockquote>
+<p>ERROR Plugin load failed: hexo-server<br>原因：<br>Besides, utilities are separated into a standalone module. hexo.util is not reachable anymore.<br>解决方法，执行命令：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-server</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有关-ejs, -stylus, -marked的一些错误提示<br>解决办法, 执行命令:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-ejs --save</span><br><span class="line">npm install hexo-renderer-stylus --save</span><br><span class="line">npm install hexo-renderer-marked --save</span><br><span class="line">//这个时候再重新生成静态文件，命令：</span><br><span class="line">hexo generate （或hexo g）</span><br><span class="line">//启动本地服务器：</span><br><span class="line">hexo server （或hexo s）</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa" target="_blank" rel="noopener">http://blog.haoji.me</a></p>
 
       
     </div>
@@ -479,7 +505,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/opengl/" rel="tag"><i class="fa fa-tag"></i> opengl</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          
+            <a href="/tags/next/" rel="tag"><i class="fa fa-tag"></i> next</a>
           
         </div>
       
@@ -492,15 +520,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/02/21/Git基本操作/" rel="next" title="Git基本操作">
+                <i class="fa fa-chevron-left"></i> Git基本操作
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/20/OpenGL(二)-基本图元绘制/" rel="prev" title="OpenGL(二)-基本图元绘制">
-                OpenGL(二)-基本图元绘制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -676,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#走向3D"><span class="nav-number">1.</span> <span class="nav-text">走向3D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D图形术语"><span class="nav-number">2.</span> <span class="nav-text">3D图形术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D图形的常见用途"><span class="nav-number">3.</span> <span class="nav-text">3D图形的常见用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#着色器"><span class="nav-number">4.</span> <span class="nav-text">着色器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D编程的基本原则"><span class="nav-number">5.</span> <span class="nav-text">3D编程的基本原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenGL在Mac上的环境搭建"><span class="nav-number">6.</span> <span class="nav-text">OpenGL在Mac上的环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备资源"><span class="nav-number">6.1.</span> <span class="nav-text">准备资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Xcode的openGL环境"><span class="nav-number">6.2.</span> <span class="nav-text">配置Xcode的openGL环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图"><span class="nav-number">7.</span> <span class="nav-text">效果图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo搭建Github-Pages博客记录"><span class="nav-number">1.</span> <span class="nav-text">Hexo搭建Github-Pages博客记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建github博客"><span class="nav-number">3.</span> <span class="nav-text">搭建github博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建仓库"><span class="nav-number">3.1.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置SSH-key"><span class="nav-number">3.2.</span> <span class="nav-text">配置SSH key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo框架搭建"><span class="nav-number">3.3.</span> <span class="nav-text">Hexo框架搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">3.3.2.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题设置"><span class="nav-number">3.3.3.</span> <span class="nav-text">主题设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化本地git仓库"><span class="nav-number">3.3.4.</span> <span class="nav-text">初始化本地git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网站部署"><span class="nav-number">3.3.5.</span> <span class="nav-text">网站部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用hexo命令"><span class="nav-number">3.4.</span> <span class="nav-text">常用hexo命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">3.5.</span> <span class="nav-text">绑定域名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些报错处理"><span class="nav-number">4.</span> <span class="nav-text">一些报错处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
