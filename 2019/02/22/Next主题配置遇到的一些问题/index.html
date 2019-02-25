@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="问题一: 归档/分类/标签页面或子页面显示错误 CAN’T GET XXXHexo在生成静态页的时候，需要使用对应的插件： * hexo-generator-index #生成首页 * hexo-generator-archive #生成归档页 * hexo-generator-tag #生成标签页 * hex0-generator-category #生成分类页">
+<meta name="description" content="问题一: 归档/分类/标签页面或子页面显示错误 Cannot GET XXXHexo在生成静态页的时候，需要使用对应的插件： * hexo-generator-index #生成首页 * hexo-generator-archive #生成归档页 * hexo-generator-tag #生成标签页 * hex0-generator-category #生成分类页">
 <meta name="keywords" content="hexo,next">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Next主题配置遇到的一些问题">
 <meta property="og:url" content="http://yoursite.com/2019/02/22/Next主题配置遇到的一些问题/index.html">
 <meta property="og:site_name" content="Sober&#39;s Notes">
-<meta property="og:description" content="问题一: 归档/分类/标签页面或子页面显示错误 CAN’T GET XXXHexo在生成静态页的时候，需要使用对应的插件： * hexo-generator-index #生成首页 * hexo-generator-archive #生成归档页 * hexo-generator-tag #生成标签页 * hex0-generator-category #生成分类页">
+<meta property="og:description" content="问题一: 归档/分类/标签页面或子页面显示错误 Cannot GET XXXHexo在生成静态页的时候，需要使用对应的插件： * hexo-generator-index #生成首页 * hexo-generator-archive #生成归档页 * hexo-generator-tag #生成标签页 * hex0-generator-category #生成分类页">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/media/15510751572862/15510789714711.jpg">
-<meta property="og:updated_time" content="2019-02-25T07:28:12.157Z">
+<meta property="og:updated_time" content="2019-02-25T08:56:45.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Next主题配置遇到的一些问题">
-<meta name="twitter:description" content="问题一: 归档/分类/标签页面或子页面显示错误 CAN’T GET XXXHexo在生成静态页的时候，需要使用对应的插件： * hexo-generator-index #生成首页 * hexo-generator-archive #生成归档页 * hexo-generator-tag #生成标签页 * hex0-generator-category #生成分类页">
+<meta name="twitter:description" content="问题一: 归档/分类/标签页面或子页面显示错误 Cannot GET XXXHexo在生成静态页的时候，需要使用对应的插件： * hexo-generator-index #生成首页 * hexo-generator-archive #生成归档页 * hexo-generator-tag #生成标签页 * hex0-generator-category #生成分类页">
 <meta name="twitter:image" content="http://yoursite.com/media/15510751572862/15510789714711.jpg">
 
 
@@ -414,14 +414,24 @@
       
 
       
-        <h3 id="问题一-归档-分类-标签页面或子页面显示错误-CAN’T-GET-XXX"><a href="#问题一-归档-分类-标签页面或子页面显示错误-CAN’T-GET-XXX" class="headerlink" title="问题一: 归档/分类/标签页面或子页面显示错误 CAN’T GET XXX"></a>问题一: 归档/分类/标签页面或子页面显示错误 CAN’T GET XXX</h3><p>Hexo在生成静态页的时候，需要使用对应的插件：</p>
+        <h3 id="问题一-归档-分类-标签页面或子页面显示错误-Cannot-GET-XXX"><a href="#问题一-归档-分类-标签页面或子页面显示错误-Cannot-GET-XXX" class="headerlink" title="问题一: 归档/分类/标签页面或子页面显示错误 Cannot GET XXX"></a>问题一: 归档/分类/标签页面或子页面显示错误 Cannot GET XXX</h3><p>Hexo在生成静态页的时候，需要使用对应的插件：</p>
 <pre><code>* hexo-generator-index #生成首页
 * hexo-generator-archive #生成归档页
 * hexo-generator-tag #生成标签页
 * hex0-generator-category #生成分类页
 </code></pre><a id="more"></a>
 <p>对应安装命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-archive --save</span><br><span class="line">$ npm install hexo-generator-tag --save</span><br><span class="line">$ npm install hexo-generator-category --save</span><br></pre></td></tr></table></figure></p>
-<p>注意, 其中tag/category都需要有对应的本地文件, 用<code>hexo new page xxx</code>对应生成</p>
+<p>注意, 其中tag/category都需要有对应的本地文件, 即在 /source/ 目录下新建 categories 目录和 tags 目录(也可以用<code>hexo new page xxx</code>对应生成)，里面的要有 index.md 文件，文件格式如下, 注意type不能写错:</p>
+<ul>
+<li><p>tags index.md</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-02-20 18:25:04</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>categories index.md</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2019-02-20 18:16:44</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后每次写的新文章顶部写入categories/tags的value值, hexo即可自动帮你进行分类或标签管理, 示例如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Git基本操作</span><br><span class="line">date: 2019-02-21 20:38:37</span><br><span class="line">categories: 学习笔记</span><br><span class="line">tags: [Git]</span><br><span class="line">top: 90</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<p>当然, next的主题配置文件里也要打开对应的注释, 如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  about: /about/ || user</span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  categories: /categories/ || th</span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line"></span><br><span class="line"># Enable/Disable menu icons.</span><br><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></p>
 <h3 id="问题二-配置博客单篇文章阅读次数-阅读次数不能正常显示"><a href="#问题二-配置博客单篇文章阅读次数-阅读次数不能正常显示" class="headerlink" title="问题二: 配置博客单篇文章阅读次数, 阅读次数不能正常显示"></a>问题二: 配置博客单篇文章阅读次数, 阅读次数不能正常显示</h3><p>采用的是leanCloud配置方法, 具体配置教程请参考<a href="https://vonsdite.cn/posts/74d5335f.html" target="_blank" rel="noopener">这里</a></p>
 <p>若按照如上教程配置之后, 阅读次数仍无法显示, 可以参考我的解决办法:<br>即打开leanCloud中关于Counter的权限, 我将<code>add_fields</code>和<code>create</code>两个选项的权限改为<code>所有用户</code>后, 博客文章的阅读次数就正常显示了=-=, 如下图:</p>
 <p><img src="/media/15510751572862/15510789714711.jpg" alt></p>
@@ -678,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题一-归档-分类-标签页面或子页面显示错误-CAN’T-GET-XXX"><span class="nav-number">1.</span> <span class="nav-text">问题一: 归档/分类/标签页面或子页面显示错误 CAN’T GET XXX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题二-配置博客单篇文章阅读次数-阅读次数不能正常显示"><span class="nav-number">2.</span> <span class="nav-text">问题二: 配置博客单篇文章阅读次数, 阅读次数不能正常显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主题个性化设置"><span class="nav-number">3.1.</span> <span class="nav-text">主题个性化设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置评论功能"><span class="nav-number">3.2.</span> <span class="nav-text">配置评论功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章阅读次数配置"><span class="nav-number">3.3.</span> <span class="nav-text">文章阅读次数配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题搜索参考"><span class="nav-number">3.4.</span> <span class="nav-text">问题搜索参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题一-归档-分类-标签页面或子页面显示错误-Cannot-GET-XXX"><span class="nav-number">1.</span> <span class="nav-text">问题一: 归档/分类/标签页面或子页面显示错误 Cannot GET XXX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题二-配置博客单篇文章阅读次数-阅读次数不能正常显示"><span class="nav-number">2.</span> <span class="nav-text">问题二: 配置博客单篇文章阅读次数, 阅读次数不能正常显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主题个性化设置"><span class="nav-number">3.1.</span> <span class="nav-text">主题个性化设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置评论功能"><span class="nav-number">3.2.</span> <span class="nav-text">配置评论功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章阅读次数配置"><span class="nav-number">3.3.</span> <span class="nav-text">文章阅读次数配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题搜索参考"><span class="nav-number">3.4.</span> <span class="nav-text">问题搜索参考</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -729,7 +739,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.4k字</span>
+  <span class="post-count">博客全站共11.6k字</span>
 </div>
 
         
