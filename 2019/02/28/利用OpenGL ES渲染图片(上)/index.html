@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/media/15512623380068/15512658304854.jpg">
 <meta property="og:image" content="http://yoursite.com/media/15512623380068/15513483849655.jpg">
 <meta property="og:image" content="http://yoursite.com/media/15512623380068/15513487957020.jpg">
-<meta property="og:updated_time" content="2019-02-28T10:20:32.735Z">
+<meta property="og:updated_time" content="2019-02-28T10:34:13.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用OpenGL ES渲染图片(上)">
 <meta name="twitter:description" content="OpenGL与OpenGL ES发展历史图形编程接⼝ 2D图形编程接⼝口: GDI , Skiz, OpenVG  3D图形编程接⼝口: DirectX , OpenGL/OpenGL ES , Embedded Systems   OpenGL的特点 跨操作系统平台运⾏ 隐藏底层硬件信息  专⽤渲染接⼝">
@@ -469,16 +469,17 @@
 <p>应⽤用程序层 -&gt; 硬件抽象层 -&gt; 硬件层<br><strong>应⽤用层:</strong> 游戏和应⽤用层软件开发⼈人员为主体，通过调⽤用API进行上层开发，不需要考虑移植性问题。<br><strong>硬件抽象层:</strong> 抽象出硬件的加速功能，进行有利于应用层开发的封装,并向应用层提供开发API<br><strong>硬件层:</strong> 将硬件驱动提供给抽象层，以实现抽象层加速功能的有效性。 </p>
 <h4 id="shader"><a href="#shader" class="headerlink" title="shader"></a>shader</h4><p>着色器。着⾊器其实就是一段在GPU运行的程序。我们平时的程序，是在CPU运行。由于GPU的硬件设计结构与CPU有着很⼤的不同，所以GPU需要一些新的编程语⾔.</p>
 <p>渲染流水线分为两种，其中一种为可编程渲染流⽔线。另外一种为固定渲染流水线。(也称可编程管线或固定管线，管线就是流⽔线的意思)。渲染流水线可否编程，取决于程序猿能否在顶点着⾊器以及片段着色器上进行编码。⽽现在的渲染流水线，基本都是可编程的，当然，它们也支持固定渲染流⽔线的功能</p>
-<h4 id="渲染流⽔线的具体流程"><a href="#渲染流⽔线的具体流程" class="headerlink" title="渲染流⽔线的具体流程"></a>渲染流⽔线的具体流程</h4><p><strong>1、应⽤用层 :</strong><br>在这⼀层，我们⽬前使⽤的是DirectX与OpenGL。对于这一部分，主要是一些API等的调⽤<br><strong>2、硬件抽象层 :</strong><br>应⽤程序层主要与内存，CPU打交道，诸如碰撞检测，场景图监理，视锥裁剪等经典算法在 此阶段执行。在阶段的末端，几何体的数据(顶点坐标，法向量，纹理坐标，纹理)等通过数据总线传送到图形硬件<br><strong>3、硬件层 :</strong><br>硬件层在渲染流水线中最为复杂，也最为重要。可编程渲染流⽔线与固定渲染流水线的区别在于是否对着⾊器进⾏编程。<br>⾸先我们先了解固定渲染流水线它主要分为以下⼏个阶段:<br><strong>顶点变换 -&gt; 图元转配与光栅化 -&gt; ⽚段纹理映射和着色 -&gt; 光栅化操作</strong></p>
+<h4 id="渲染流⽔线的具体流程"><a href="#渲染流⽔线的具体流程" class="headerlink" title="渲染流⽔线的具体流程"></a>渲染流⽔线的具体流程</h4><p><strong>1、应⽤层 :</strong><br>在这⼀层，我们⽬前使⽤的是DirectX与OpenGL。对于这一部分，主要是一些API的调⽤<br><strong>2、硬件抽象层 :</strong><br>应⽤程序层主要与内存，CPU打交道，诸如碰撞检测，场景图监理，视锥裁剪等经典算法在此阶段执行。在阶段的末端，几何体的数据(顶点坐标，法向量，纹理坐标，纹理)等通过数据总线传送到图形硬件<br><strong>3、硬件层 :</strong><br>硬件层在渲染流水线中最为复杂，也最为重要。可编程渲染流⽔线与固定渲染流水线的区别在于是否对着⾊器进⾏编程。</p>
+<p>⾸先我们先了解固定渲染流水线, 它主要分为以下⼏个阶段:<br><strong>顶点变换 -&gt; 图元转配与光栅化 -&gt; ⽚段纹理映射和着色 -&gt; 光栅化操作</strong></p>
 <p><strong>硬件层—固定渲染管线流程图 :</strong></p>
 <p><img src="/media/15512623380068/15512656204743.jpg" alt="硬件层—固定渲染管线流程图 
 "></p>
-<p><strong>光栅化(Rasterization):</strong><br>将顶点数据转换为片元的过程, ⽚元中每个一个元素对于帧缓存区的一个像素;<br>光栅化其实是一个将⼏何图元变成一个二维图像的过程!!<br>光栅化的过程就是为了产出⽚元</p>
+<p><strong>光栅化(Rasterization):</strong><br>将顶点数据转换为片元的过程, ⽚元中每个一个元素对于帧缓存区的一个像素;<br>光栅化其实是一个将⼏何图元变成一个二维图像的过程, 光栅化的过程就是为了产出⽚元</p>
 <p><strong>硬件层—可编程渲染流⽔水线流程图:</strong><br><img src="/media/15512623380068/15512658304854.jpg" alt></p>
-<h4 id="GPU图形渲染管线"><a href="#GPU图形渲染管线" class="headerlink" title="GPU图形渲染管线"></a>GPU图形渲染管线</h4><p><img src="/media/15512623380068/15513483849655.jpg" alt><br><strong>应用程序阶段 :</strong><br>主要是⾼级编程语言开发,C,OC,C++<br>输出: 通过数据总线,把⼏何体的数据(顶点坐标\法线\纹理坐标\纹理)等传送到GPU上<br><strong>几何阶段 :</strong><br>输⼊: 应⽤程序末端的内容<br>负责任务: 顶点坐标变换,光照,裁剪,投影,屏幕映射<br>输出: 经过变换和投影之后的屏幕坐标,颜色,纹理坐标<br><strong>光栅化阶段 :</strong><br>参考前面的解释</p>
-<h4 id="为什么需要对三维空间的顶点进行坐标空间转换"><a href="#为什么需要对三维空间的顶点进行坐标空间转换" class="headerlink" title="为什么需要对三维空间的顶点进行坐标空间转换?"></a>为什么需要对三维空间的顶点进行坐标空间转换?</h4><p>输⼊到计算机当中的是一系列三维坐标的点,但是我们看到的屏<br>幕是⼆维坐标点. 所以需要转换<br>ObjectSpace(物体空间/模型空间)-&gt; WorldSpace(世界空<br>间)-&gt;EyeSpace(观察空间)-&gt;ClicpAndProjectSpace(屏幕空间) </p>
+<h4 id="GPU图形渲染管线"><a href="#GPU图形渲染管线" class="headerlink" title="GPU图形渲染管线"></a>GPU图形渲染管线</h4><p><img src="/media/15512623380068/15513483849655.jpg" alt><br><strong>应用程序阶段 :</strong><br>主要是⾼级编程语言开发,如C,OC,C++<br>输出: 通过数据总线,把⼏何体的数据(顶点坐标\法线\纹理坐标\纹理)等传送到GPU上<br><strong>几何阶段 :</strong><br>输⼊: 应⽤程序末端的内容<br>负责任务: 顶点坐标变换,光照,裁剪,投影,屏幕映射<br>输出: 经过变换和投影之后的屏幕坐标,颜色,纹理坐标<br><strong>光栅化阶段 :</strong><br>参考前面的解释</p>
+<h4 id="为什么需要对三维空间的顶点进行坐标空间转换"><a href="#为什么需要对三维空间的顶点进行坐标空间转换" class="headerlink" title="为什么需要对三维空间的顶点进行坐标空间转换?"></a>为什么需要对三维空间的顶点进行坐标空间转换?</h4><p>输⼊到计算机当中的是一系列三维坐标的点,但是我们看到的屏<br>幕是⼆维坐标点. 所以需要一系列的坐标转换:<br>ObjectSpace(物体空间/模型空间)-&gt; WorldSpace(世界空<br>间)-&gt;EyeSpace(观察空间)-&gt;ClicpAndProjectSpace(屏幕空间) </p>
 <h4 id="CPU与GPU之间的关系"><a href="#CPU与GPU之间的关系" class="headerlink" title="CPU与GPU之间的关系"></a>CPU与GPU之间的关系</h4><p>GPU具有⾼并行的结构，所以在处理图形数据和复杂算法时比CPU更加有效率</p>
-<p><img src="/media/15512623380068/15513487957020.jpg" alt><br>CPU在执行任务的时候，一个时刻只会处理一个数据，不存在真<br>正意义上的并行，⽽GPU则有多个处理器核，在一个时刻可以并<br>⾏处理多个数据</p>
+<p><img src="/media/15512623380068/15513487957020.jpg" alt><br>CPU在执行任务的时候，一个时刻只会处理一个数据，不存在真正意义上的并行，⽽GPU则有多个处理器核，在一个时刻可以并⾏处理多个数据</p>
 
       
     </div>
@@ -547,6 +548,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/28/利用OpenGL ES渲染图片(下)/" rel="prev" title="利用OpenGL ES渲染图片(下)">
+                利用OpenGL ES渲染图片(下) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -628,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -776,7 +781,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.7k字</span>
+  <span class="post-count">博客全站共17.4k字</span>
 </div>
 
         
