@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT, sober, soober, blog, iOS">
+  <meta name="keywords" content="opengles,">
 
 
 
@@ -86,16 +86,26 @@
 
 
 
-<meta name="description" content="GET SOBER. STAY SOBER.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sober&#39;s Notes">
-<meta property="og:url" content="http://yoursite.com/categories/利器/index.html">
+<meta name="description" content="OpenGL与OpenGL ES发展历史图形编程接⼝ 2D图形编程接⼝口: GDI , Skiz, OpenVG  3D图形编程接⼝口: DirectX , OpenGL/OpenGL ES , Embedded Systems   OpenGL的特点 跨操作系统平台运⾏ 隐藏底层硬件信息  专⽤渲染接⼝">
+<meta name="keywords" content="opengles">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用OpenGL ES渲染图片(上)">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/利用OpenGL ES渲染图片(上)/index.html">
 <meta property="og:site_name" content="Sober&#39;s Notes">
-<meta property="og:description" content="GET SOBER. STAY SOBER.">
+<meta property="og:description" content="OpenGL与OpenGL ES发展历史图形编程接⼝ 2D图形编程接⼝口: GDI , Skiz, OpenVG  3D图形编程接⼝口: DirectX , OpenGL/OpenGL ES , Embedded Systems   OpenGL的特点 跨操作系统平台运⾏ 隐藏底层硬件信息  专⽤渲染接⼝">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/media/15512623380068/15512630639365.jpg">
+<meta property="og:image" content="http://yoursite.com/media/15512623380068/15512638948374.jpg">
+<meta property="og:image" content="http://yoursite.com/media/15512623380068/15512649576104.jpg">
+<meta property="og:image" content="http://yoursite.com/media/15512623380068/15512656204743.jpg">
+<meta property="og:image" content="http://yoursite.com/media/15512623380068/15512658304854.jpg">
+<meta property="og:image" content="http://yoursite.com/media/15512623380068/15513483849655.jpg">
+<meta property="og:image" content="http://yoursite.com/media/15512623380068/15513487957020.jpg">
+<meta property="og:updated_time" content="2019-02-28T10:20:32.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sober&#39;s Notes">
-<meta name="twitter:description" content="GET SOBER. STAY SOBER.">
+<meta name="twitter:title" content="利用OpenGL ES渲染图片(上)">
+<meta name="twitter:description" content="OpenGL与OpenGL ES发展历史图形编程接⼝ 2D图形编程接⼝口: GDI , Skiz, OpenVG  3D图形编程接⼝口: DirectX , OpenGL/OpenGL ES , Embedded Systems   OpenGL的特点 跨操作系统平台运⾏ 隐藏底层硬件信息  专⽤渲染接⼝">
+<meta name="twitter:image" content="http://yoursite.com/media/15512623380068/15512630639365.jpg">
 
 
 
@@ -125,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/利器/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/利用OpenGL ES渲染图片(上)/">
 
 
 
 
 
-  <title>分类: 利器 | Sober's Notes</title>
+  <title>利用OpenGL ES渲染图片(上) | Sober's Notes</title>
   
 
 
@@ -150,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -286,79 +296,277 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>利器<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/利用OpenGL ES渲染图片(上)/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/22/Hexo搭建Github-Pages博客记录/" itemprop="url">
-              
-                <span itemprop="name">Hexo搭建Github-Pages博客记录</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">利用OpenGL ES渲染图片(上)</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-22T15:00:37+08:00" content="2019-02-22">
-          02-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T18:38:37+08:00">
+                2019-02-28
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/28/利用OpenGL ES渲染图片(上)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/利用OpenGL ES渲染图片(上)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/28/利用OpenGL ES渲染图片(上)/" class="leancloud_visitors" data-flag-title="利用OpenGL ES渲染图片(上)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/22/Next主题配置遇到的一些问题/" itemprop="url">
-              
-                <span itemprop="name">Next主题配置遇到的一些问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-22T15:00:37+08:00" content="2019-02-22">
-          02-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h2 id="OpenGL与OpenGL-ES发展历史"><a href="#OpenGL与OpenGL-ES发展历史" class="headerlink" title="OpenGL与OpenGL ES发展历史"></a>OpenGL与OpenGL ES发展历史</h2><h3 id="图形编程接⼝"><a href="#图形编程接⼝" class="headerlink" title="图形编程接⼝"></a>图形编程接⼝</h3><ul>
+<li>2D图形编程接⼝口: GDI , Skiz, OpenVG </li>
+<li>3D图形编程接⼝口: DirectX , OpenGL/OpenGL ES , Embedded Systems </li>
+</ul>
+<h3 id="OpenGL的特点"><a href="#OpenGL的特点" class="headerlink" title="OpenGL的特点"></a>OpenGL的特点</h3><ul>
+<li>跨操作系统平台运⾏</li>
+<li>隐藏底层硬件信息 </li>
+<li>专⽤渲染接⼝ <a id="more"></a>
+<h3 id="OpenGL历史变更"><a href="#OpenGL历史变更" class="headerlink" title="OpenGL历史变更"></a>OpenGL历史变更</h3></li>
+<li>1992年年7⽉月SGI发布OpenGL1.0版本 </li>
+<li>(硅图)SGI</li>
+<li>Window NT版本的OpenGL </li>
+<li>1995年年OpenGL1.1版本发布</li>
+<li>2003年年7⽉月SGI与ARB发OpenGL 1.5 </li>
+<li>2004年年8⽉月OpenGL2.0版本发布</li>
+<li>OpenGL Shading Language(GLSL) </li>
+<li>shader </li>
+</ul>
+<h3 id="OpenGL-ES的版本"><a href="#OpenGL-ES的版本" class="headerlink" title="OpenGL ES的版本"></a>OpenGL ES的版本</h3><ul>
+<li>OpenGL ES 1.X :针对固定功能流⽔水管线硬件 </li>
+<li>OpenGL ES 2.X :针对可编程流⽔水管线硬件 </li>
+<li>OpenGL ES 3.X :OpenGL ES 2.0的扩展 </li>
+</ul>
+<h3 id="着⾊色器器渲染过程"><a href="#着⾊色器器渲染过程" class="headerlink" title="着⾊色器器渲染过程"></a>着⾊色器器渲染过程</h3><p>在渲染过程中，必须存储2种着⾊器，分别是顶点着⾊器、⽚元着⾊器。顶点着⾊器是第⼀个着⾊器、⽚元着色器是最后一个。顶点着⾊器中处理顶点、⽚元着⾊器处理像素点颜色。<br><img src="/media/15512623380068/15512630639365.jpg" alt></p>
+<h3 id="屏幕渲染方式"><a href="#屏幕渲染方式" class="headerlink" title="屏幕渲染方式"></a>屏幕渲染方式</h3><ul>
+<li><p>On-Screen Rendering(当前屏幕渲染) : 指的是GPU的渲染操作是在当前用于显示的屏幕缓存区中进行的。 </p>
+</li>
+<li><p>Off-Screen Rendering(离幕渲染) : 指的是GPU在当前屏幕缓存区以外新开辟一个缓存区进⾏渲染操作</p>
+</li>
+</ul>
+<p>⼀般情况下，OpenGL ES会将应用提供到渲染服务的动画直接渲染显示(使用基本的渲染的流程) 但对于一些复杂的图像动画的渲染，并不能够直接渲染叠加显示出来。⽽是需要根据Command Buffer分通道进行渲染再组合。这个组合过程中，就有些渲染通道是不会直接显示出来的。标记此次渲染需要更多的渲染通道和合并步骤，⽽这些没有直接渲染显示在屏幕上的通道就是离屏渲染通道。 </p>
+<p>离屏渲染需要更多的渲染通道，⽽不同的渲染通道间切换需要消耗一定的时间，所以离屏渲染可能会发生卡顿。</p>
+<p>相⽐于当前屏幕渲染，离屏渲染的代价相对⽽言较高。主要有以下2个原因:<br>1.创建新的缓存区<br>2.上下⽂切换 </p>
+<p>哪些情况会使用离屏渲染(off-Screen Render)? </p>
+<ul>
+<li>drawRect</li>
+<li>layer.shouldRasterize = true;</li>
+<li>有mask或者阴影(layer.makesToBounds)<br>shouldRasterize(光栅化)、masks(遮罩)、shadows(阴影) edge antialiasing(抗锯⻮齿)、group opacity(不不透明) </li>
+<li>Text(UILabel,CATextLayer,CoreText) </li>
+</ul>
+<h3 id="为什么要用FrameBuffer和-RenderBuffer-它们是什么关系"><a href="#为什么要用FrameBuffer和-RenderBuffer-它们是什么关系" class="headerlink" title="为什么要用FrameBuffer和 RenderBuffer?它们是什么关系?"></a>为什么要用FrameBuffer和 RenderBuffer?它们是什么关系?</h3><p><img src="/media/15512623380068/15512638948374.jpg" alt></p>
+<p>A renderbuffer object is a 2D image buffer allocated by the application. The renderbuffer can be used to allocate and store color, depth, or stencil values and can be used as a color, depth, or stencil attachment in a framebuffer object. A renderbuffer is similar to an off-screen window system provided drawable surface, such as a pbuffer. A renderbuffer, however, cannot be directly used as a GL texture. </p>
+<p>⼀个renderbuffer对象是应⽤分配的一个2D图像缓存区。renderbuffer能够被用来分配和存储颜色、深度或者模板值。也能够在一个framebuffer被⽤用作颜色、深度、模板的附件。⼀个renderbuffer是一个类似于屏幕窗口系统提供可绘制的表面。⽐如pBuffer。⼀个renderbuffer, 并不能直接被当做⼀个GL纹理使用。 </p>
+<p>A framebuffer object (often referred to as an FBO) is a collection of color, depth, and stencil buffer attachment points; state that describes properties such as the size and format of the color, depth, and stencil buffers attached to the FBO; and the names of the texture and renderbuffer objects attached to the FBO. Various 2D images can be attached to the color attachment point in the framebuffer object. These include a renderbuffer object that stores color values, a mip-level of a 2D texture or a cube map face, or even a mip-level of a 2D slice in a 3D texture. Similarly, various 2D images contain- ing depth values can be attached to the depth attachment point of an FBO. These can include a renderbuffer, a mip-level of a 2D texture or a cubemap face that stores depth values. The only 2D image that can be attached to the stencil attachment point of an FBO is a renderbuffer object that stores stencil values. </p>
+<p>⼀个frameBuffer对象(通常被称为⼀个FBO)。是一个颜色、深度和模板缓存区附着点的集合。描述属性的状态，例如颜⾊、深度和模板缓存区的⼤⼩和格式，都关联到FBO(Frame Buffer Object)。并且纹理的名字和renderBuffer对象也都是关联于FBO。各种各样的2D图形能够被附着framebuffer对象的颜色附着点。它们包含了renderbuffer对象存储的颜色值、一个2D纹理或⽴⽅体贴图。或者一个mip-level的⼆维切面在3D纹理。同样，各种各样的2D图形包含了当时的深度值可以附加到⼀个FBO的深度附着点钟去。唯一的二维图像，能够附着在FBO的模板附着点，是一个renderbuffer对象存储模板值。 </p>
+<h3 id="基本图形硬件流⽔线设计"><a href="#基本图形硬件流⽔线设计" class="headerlink" title="基本图形硬件流⽔线设计"></a>基本图形硬件流⽔线设计</h3><p><img src="/media/15512623380068/15512649576104.jpg" alt></p>
+<p>应⽤用程序层 -&gt; 硬件抽象层 -&gt; 硬件层<br><strong>应⽤用层:</strong> 游戏和应⽤用层软件开发⼈人员为主体，通过调⽤用API进行上层开发，不需要考虑移植性问题。<br><strong>硬件抽象层:</strong> 抽象出硬件的加速功能，进行有利于应用层开发的封装,并向应用层提供开发API<br><strong>硬件层:</strong> 将硬件驱动提供给抽象层，以实现抽象层加速功能的有效性。 </p>
+<h4 id="shader"><a href="#shader" class="headerlink" title="shader"></a>shader</h4><p>着色器。着⾊器其实就是一段在GPU运行的程序。我们平时的程序，是在CPU运行。由于GPU的硬件设计结构与CPU有着很⼤的不同，所以GPU需要一些新的编程语⾔.</p>
+<p>渲染流水线分为两种，其中一种为可编程渲染流⽔线。另外一种为固定渲染流水线。(也称可编程管线或固定管线，管线就是流⽔线的意思)。渲染流水线可否编程，取决于程序猿能否在顶点着⾊器以及片段着色器上进行编码。⽽现在的渲染流水线，基本都是可编程的，当然，它们也支持固定渲染流⽔线的功能</p>
+<h4 id="渲染流⽔线的具体流程"><a href="#渲染流⽔线的具体流程" class="headerlink" title="渲染流⽔线的具体流程"></a>渲染流⽔线的具体流程</h4><p><strong>1、应⽤用层 :</strong><br>在这⼀层，我们⽬前使⽤的是DirectX与OpenGL。对于这一部分，主要是一些API等的调⽤<br><strong>2、硬件抽象层 :</strong><br>应⽤程序层主要与内存，CPU打交道，诸如碰撞检测，场景图监理，视锥裁剪等经典算法在 此阶段执行。在阶段的末端，几何体的数据(顶点坐标，法向量，纹理坐标，纹理)等通过数据总线传送到图形硬件<br><strong>3、硬件层 :</strong><br>硬件层在渲染流水线中最为复杂，也最为重要。可编程渲染流⽔线与固定渲染流水线的区别在于是否对着⾊器进⾏编程。<br>⾸先我们先了解固定渲染流水线它主要分为以下⼏个阶段:<br><strong>顶点变换 -&gt; 图元转配与光栅化 -&gt; ⽚段纹理映射和着色 -&gt; 光栅化操作</strong></p>
+<p><strong>硬件层—固定渲染管线流程图 :</strong></p>
+<p><img src="/media/15512623380068/15512656204743.jpg" alt="硬件层—固定渲染管线流程图 
+"></p>
+<p><strong>光栅化(Rasterization):</strong><br>将顶点数据转换为片元的过程, ⽚元中每个一个元素对于帧缓存区的一个像素;<br>光栅化其实是一个将⼏何图元变成一个二维图像的过程!!<br>光栅化的过程就是为了产出⽚元</p>
+<p><strong>硬件层—可编程渲染流⽔水线流程图:</strong><br><img src="/media/15512623380068/15512658304854.jpg" alt></p>
+<h4 id="GPU图形渲染管线"><a href="#GPU图形渲染管线" class="headerlink" title="GPU图形渲染管线"></a>GPU图形渲染管线</h4><p><img src="/media/15512623380068/15513483849655.jpg" alt><br><strong>应用程序阶段 :</strong><br>主要是⾼级编程语言开发,C,OC,C++<br>输出: 通过数据总线,把⼏何体的数据(顶点坐标\法线\纹理坐标\纹理)等传送到GPU上<br><strong>几何阶段 :</strong><br>输⼊: 应⽤程序末端的内容<br>负责任务: 顶点坐标变换,光照,裁剪,投影,屏幕映射<br>输出: 经过变换和投影之后的屏幕坐标,颜色,纹理坐标<br><strong>光栅化阶段 :</strong><br>参考前面的解释</p>
+<h4 id="为什么需要对三维空间的顶点进行坐标空间转换"><a href="#为什么需要对三维空间的顶点进行坐标空间转换" class="headerlink" title="为什么需要对三维空间的顶点进行坐标空间转换?"></a>为什么需要对三维空间的顶点进行坐标空间转换?</h4><p>输⼊到计算机当中的是一系列三维坐标的点,但是我们看到的屏<br>幕是⼆维坐标点. 所以需要转换<br>ObjectSpace(物体空间/模型空间)-&gt; WorldSpace(世界空<br>间)-&gt;EyeSpace(观察空间)-&gt;ClicpAndProjectSpace(屏幕空间) </p>
+<h4 id="CPU与GPU之间的关系"><a href="#CPU与GPU之间的关系" class="headerlink" title="CPU与GPU之间的关系"></a>CPU与GPU之间的关系</h4><p>GPU具有⾼并行的结构，所以在处理图形数据和复杂算法时比CPU更加有效率</p>
+<p><img src="/media/15512623380068/15513487957020.jpg" alt><br>CPU在执行任务的时候，一个时刻只会处理一个数据，不存在真<br>正意义上的并行，⽽GPU则有多个处理器核，在一个时刻可以并<br>⾏处理多个数据</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你赏我糖果吃</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.jpg" alt="Sober 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Sober 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/opengles/" rel="tag"><i class="fa fa-tag"></i> opengles</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/22/Hexo搭建Github-Pages博客记录/" rel="next" title="Hexo搭建Github-Pages博客记录">
+                <i class="fa fa-chevron-left"></i> Hexo搭建Github-Pages博客记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -366,6 +574,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -386,8 +601,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -491,6 +715,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenGL与OpenGL-ES发展历史"><span class="nav-number">1.</span> <span class="nav-text">OpenGL与OpenGL ES发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图形编程接⼝"><span class="nav-number">1.1.</span> <span class="nav-text">图形编程接⼝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL的特点"><span class="nav-number">1.2.</span> <span class="nav-text">OpenGL的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL历史变更"><span class="nav-number">1.3.</span> <span class="nav-text">OpenGL历史变更</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL-ES的版本"><span class="nav-number">1.4.</span> <span class="nav-text">OpenGL ES的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#着⾊色器器渲染过程"><span class="nav-number">1.5.</span> <span class="nav-text">着⾊色器器渲染过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#屏幕渲染方式"><span class="nav-number">1.6.</span> <span class="nav-text">屏幕渲染方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要用FrameBuffer和-RenderBuffer-它们是什么关系"><span class="nav-number">1.7.</span> <span class="nav-text">为什么要用FrameBuffer和 RenderBuffer?它们是什么关系?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本图形硬件流⽔线设计"><span class="nav-number">1.8.</span> <span class="nav-text">基本图形硬件流⽔线设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#shader"><span class="nav-number">1.8.1.</span> <span class="nav-text">shader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染流⽔线的具体流程"><span class="nav-number">1.8.2.</span> <span class="nav-text">渲染流⽔线的具体流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPU图形渲染管线"><span class="nav-number">1.8.3.</span> <span class="nav-text">GPU图形渲染管线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要对三维空间的顶点进行坐标空间转换"><span class="nav-number">1.8.4.</span> <span class="nav-text">为什么需要对三维空间的顶点进行坐标空间转换?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU与GPU之间的关系"><span class="nav-number">1.8.5.</span> <span class="nav-text">CPU与GPU之间的关系</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -642,6 +882,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
