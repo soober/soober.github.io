@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="opengles,glsl,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="思维导图">
+<meta name="keywords" content="opengles,glsl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL ES - 画板案例实现">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/OpenGL ES-画板案例实现/index.html">
+<meta property="og:site_name" content="Sober&#39;s Notes">
+<meta property="og:description" content="思维导图">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-7397eb35032470d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-08cefc9863d20493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1352344-ff5457490aeac85a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-18T11:07:25.464Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL ES - 画板案例实现">
+<meta name="twitter:description" content="思维导图">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1352344-7397eb35032470d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/OpenGL ES-画板案例实现/">
+
+
+
+
+
+  <title>OpenGL ES - 画板案例实现 | Sober's Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sober's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/OpenGL ES-画板案例实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sober.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenGL ES - 画板案例实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T18:38:37+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-18T19:07:25+08:00">
+                2019-03-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/18/OpenGL ES-画板案例实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/18/OpenGL ES-画板案例实现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/18/OpenGL ES-画板案例实现/" class="leancloud_visitors" data-flag-title="OpenGL ES - 画板案例实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.1k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://upload-images.jianshu.io/upload_images/1352344-7397eb35032470d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><a id="more"></a></p>
+<h2 id="初始化View"><a href="#初始化View" class="headerlink" title="初始化View"></a>初始化View</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">id</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder:aDecoder])) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//初始化CAEAGLLayer</span></span><br><span class="line">        <span class="built_in">CAEAGLLayer</span> *eaglLayer = (<span class="built_in">CAEAGLLayer</span> *)<span class="keyword">self</span>.layer;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//设置透明度</span></span><br><span class="line">        eaglLayer.opaque = <span class="literal">YES</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//设置eaglLayer描述属性</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         1.kEAGLDrawablePropertyRetainedBacking</span></span><br><span class="line"><span class="comment">           表示绘图表面显示后，是否保留其内容，通过一个NSNumber 包装一个bool值。如果是NO,表示</span></span><br><span class="line"><span class="comment">         显示内容后，不能依赖于相同的内容；如果是YES，表示显示内容后不变，一般只有在需要内容保存不变的情况下才使用YES，设置为YES,会导致性能降低，内存使用量降低。一般设置为NO。</span></span><br><span class="line"><span class="comment">         </span></span><br><span class="line"><span class="comment">         2.kEAGLDrawablePropertyColorFormat</span></span><br><span class="line"><span class="comment">            表示绘制表面的内部颜色缓存区格式</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        eaglLayer.drawableProperties = [<span class="built_in">NSDictionary</span> dictionaryWithObjectsAndKeys:</span><br><span class="line">                                        [<span class="built_in">NSNumber</span> numberWithBool:<span class="literal">YES</span>], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, <span class="literal">nil</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//初始化上下文</span></span><br><span class="line">        context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//判断是否开辟成功以及设置到当前的Context</span></span><br><span class="line">        <span class="keyword">if</span> (!context || ![EAGLContext setCurrentContext:context]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//设置视图的比例因子</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         比例因子决定视图中的内容如何从逻辑坐标空间（以点测量）映射到设备坐标空间（以像素为单位）。此值通常为1或2。更高比例的因素表明视图中的每一个点由底层的多个像素表示。例如，如果缩放因子为2，并且视图框大小为50×50点，则用于显示内容的位图的大小为100×100像素。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">self</span>.contentScaleFactor = [[<span class="built_in">UIScreen</span> mainScreen] scale];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//是否需要清屏，默认等于YES</span></span><br><span class="line">        needsErase = <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)layoutSubviews</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    [EAGLContext setCurrentContext:context];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断是否初始化</span></span><br><span class="line">    <span class="keyword">if</span> (!initialized) &#123;</span><br><span class="line">        <span class="comment">//如果没有初始化则对OpenGL初始化</span></span><br><span class="line">        initialized = [<span class="keyword">self</span> initGL];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//如果已经初始化则调整layer</span></span><br><span class="line">        [<span class="keyword">self</span> resizeFromLayer:(<span class="built_in">CAEAGLLayer</span>*)<span class="keyword">self</span>.layer];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 清除帧第一次分配</span></span><br><span class="line">    <span class="keyword">if</span> (needsErase) &#123;</span><br><span class="line">        [<span class="keyword">self</span> erase];</span><br><span class="line">        needsErase = <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="若没有进行过初始化"><a href="#若没有进行过初始化" class="headerlink" title="若没有进行过初始化"></a>若没有进行过初始化</h4><p>initialized 绘制”加油!”</p>
+<h6 id="initGL"><a href="#initGL" class="headerlink" title="initGL"></a>initGL</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)initGL</span><br><span class="line">&#123;</span><br><span class="line"> </span><br><span class="line">    //生成标识一个帧缓存对象和颜色渲染</span><br><span class="line">    glGenFramebuffers(1, &amp;viewFrameBuffer);</span><br><span class="line">    glGenRenderbuffers(1, &amp;viewRenderBuffer);</span><br><span class="line">    </span><br><span class="line">    //绑定viewFrameBuffer 和 viewRenderBuffer</span><br><span class="line">    glBindFramebuffer(GL_FRAMEBUFFER, viewFrameBuffer);</span><br><span class="line">    glBindRenderbuffer(GL_RENDERBUFFER, viewRenderBuffer);</span><br><span class="line">    </span><br><span class="line">    //绑定一个Drawable对象存储到一个OpenGL ES渲染缓存对象。</span><br><span class="line">    /*</span><br><span class="line">     创建一个渲染，可以呈现到屏幕上，你将渲染然后分配共享存储通过调用此方法。这个方法的调用替换通常给glrenderbufferstorage。缓存的存储分配了这个方法以后可以显示一个回调presentrenderbuffer：</span><br><span class="line">      为绘制缓冲区分配存储区，此处将CAEAGLLayer的绘制存储区作为绘制缓冲区的存储区</span><br><span class="line">     参数1：OpenGL ES的结合点为当前绑定的渲染。这个参数的值必须gl_renderbuffer（或gl_renderbuffer_oes在OpenGL ES 1.1语境）</span><br><span class="line">     参数2：对象管理数据存储区中的渲染。在iOS中，这个参数的值必须是一个CAEAGLLayer对象</span><br><span class="line">     </span><br><span class="line">     */</span><br><span class="line">   	[context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id&lt;EAGLDrawable&gt;)self.layer];</span><br><span class="line">    </span><br><span class="line">    //将viewRenderBuffer 绑定到GL_COLOR_ATTACHMENT0</span><br><span class="line">    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, viewRenderBuffer);</span><br><span class="line">    </span><br><span class="line">    //获取绘制缓存区的像素宽度 --将绘制缓存区像素宽度存储在backingWidth</span><br><span class="line">    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &amp;backingWidth);</span><br><span class="line">    //获取绘制缓存区的像素高度--将绘制缓存区像素高度存储在backingHeight</span><br><span class="line">    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &amp;backingHeight);</span><br><span class="line">    </span><br><span class="line">    //检查GL_FRAMEBUFFER缓存区状态</span><br><span class="line">    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) &#123;</span><br><span class="line">        NSLog(@&quot;Make complete framebuffer Object failed! %x&quot;,glCheckFramebufferStatus(GL_FRAMEBUFFER));</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //设置视口</span><br><span class="line">    glViewport(0, 0, backingWidth, backingHeight);</span><br><span class="line">    </span><br><span class="line">    //创建顶点缓冲对象来保存我们的数据</span><br><span class="line">    glGenBuffers(1, &amp;vboId);</span><br><span class="line">    </span><br><span class="line">    //加载画笔纹理</span><br><span class="line">    brushTexture = [self textureFromName:@&quot;Particle.png&quot;];</span><br><span class="line">    </span><br><span class="line">    //加载shade</span><br><span class="line">    [self setupShaders];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //点模糊效果通过开启混合模式，并设置混合函数</span><br><span class="line">    glEnable(GL_BLEND);</span><br><span class="line">    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);</span><br><span class="line">    </span><br><span class="line">    //回放录制的路径，这是“加油！”</span><br><span class="line">    NSString *path = [[NSBundle mainBundle]pathForResource:@&quot;abc&quot; ofType:@&quot;string&quot;];</span><br><span class="line">    //将path 使用NSUTF8StringEncoding 编码</span><br><span class="line">    NSString *str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line">    </span><br><span class="line">    //开辟数组空间-可变的</span><br><span class="line">    CCArr = [NSMutableArray array];</span><br><span class="line">    </span><br><span class="line">    //根据abc.string文件，将绘制点的数据，json解析到数组</span><br><span class="line">    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];</span><br><span class="line">    </span><br><span class="line">    //遍历jsonArr数组，将数据转为CCPoint类型数据</span><br><span class="line">    for (NSDictionary *dict in jsonArr) &#123;</span><br><span class="line">        CCPoint *point = [CCPoint new];</span><br><span class="line">        point.mX = [dict objectForKey:@&quot;mX&quot;];</span><br><span class="line">        point.mY = [dict objectForKey:@&quot;mY&quot;];</span><br><span class="line">        </span><br><span class="line">        //将CCPoint 对象添加到CCArr数组</span><br><span class="line">        [CCArr addObject:point];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //调用绘制方法：绘制abc.string 绘制的加油字样，延时5秒绘制！</span><br><span class="line">    [self performSelector:@selector(paint) withObject:nil afterDelay:0.5];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    return YES;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="手写着色程序-vsh-amp-fsh"><a href="#手写着色程序-vsh-amp-fsh" class="headerlink" title="手写着色程序 vsh&amp;fsh"></a>手写着色程序 vsh&amp;fsh</h6><ul>
+<li><p>vsh : 顶点着色器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//顶点</span><br><span class="line">attribute vec4 inVertex;</span><br><span class="line"></span><br><span class="line">//矩阵</span><br><span class="line">uniform mat4 MVP;</span><br><span class="line"></span><br><span class="line">//点的大小</span><br><span class="line">uniform float pointSize;</span><br><span class="line"></span><br><span class="line">//点的颜色</span><br><span class="line">uniform lowp vec4 vertexColor;</span><br><span class="line"></span><br><span class="line">//输出颜色</span><br><span class="line">varying lowp vec4 color;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    //顶点计算 = 矩阵 * 顶点</span><br><span class="line">    gl_Position = MVP * inVertex;</span><br><span class="line">    </span><br><span class="line">    //修改顶点大小</span><br><span class="line">    gl_PointSize = pointSize;</span><br><span class="line">    //    1 * 3.0;</span><br><span class="line">    </span><br><span class="line">    //将通过uniform 传递进来的颜色,从顶点着色器程序传递到片元着色器</span><br><span class="line">    color = vertexColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fsh : 片元着色器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//获取纹理</span><br><span class="line">uniform sampler2D texture;</span><br><span class="line">/*</span><br><span class="line"> sampler2D,中的2D,表示这是一个2D纹理。我们也可以使用1D\3D或者其他类型的采样器。我们总是</span><br><span class="line"> 把这个值设置为0。来指示纹理单元0.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">//获取从顶点程序传递过来的颜色</span><br><span class="line">//lowp,精度</span><br><span class="line">varying lowp vec4 color;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    //将颜色和纹理组合 是相乘！！！！</span><br><span class="line">    gl_FragColor = color * texture2D(texture, gl_PointCoord);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="加载shader"><a href="#加载shader" class="headerlink" title="加载shader"></a>加载shader</h6><p>即加载vsh和fsh<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setupShaders</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUM_PROGRAMS; i++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//读取顶点着色程序</span></span><br><span class="line">        <span class="keyword">char</span> *vsrc = readFile(pathForResource(program[i].vert));</span><br><span class="line">        <span class="keyword">char</span> *fsrc = readFile(pathForResource(program[i].frag));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//将char-&gt;NSString 对象</span></span><br><span class="line">        <span class="built_in">NSString</span> *vsrcStr = [[<span class="built_in">NSString</span> alloc]initWithBytes:vsrc length:strlen(vsrc)<span class="number">-1</span> encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">         <span class="built_in">NSString</span> *fsrcStr = [[<span class="built_in">NSString</span> alloc]initWithBytes:fsrc length:strlen(fsrc)<span class="number">-1</span> encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//打印着色程序中的代码</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"vsrc:%@"</span>,vsrcStr);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"fsrc:%@"</span>,fsrcStr);</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//attribute</span></span><br><span class="line">        GLsizei attribCt = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//创建字符串数组【1】</span></span><br><span class="line">        GLchar *attribUsed[NUM_ATTRIBS];</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        GLint attrib[NUM_ATTRIBS];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//attribute 变量名称-inVertex(point.vsh）</span></span><br><span class="line">        GLchar *attribName[NUM_ATTRIBS] = &#123;</span><br><span class="line">            <span class="string">"inVertex"</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//uniform变量名称 "MVP", "pointSize", "vertexColor", "texture",</span></span><br><span class="line">        <span class="keyword">const</span> GLchar *uniformName[NUM_UNIFORMS] = &#123;</span><br><span class="line">            <span class="string">"MVP"</span>, <span class="string">"pointSize"</span>, <span class="string">"vertexColor"</span>, <span class="string">"texture"</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//遍历attribute</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; NUM_ATTRIBS; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//strstr(str1,str2) 函数用于判断字符串str2是否是str1的子串。如果是，则该函数返回str2在str1中首次出现的地址；否则，返回NULL。</span></span><br><span class="line">            <span class="comment">//判断，attribute 变量，是否存在顶点着色器程序中。point.vsh</span></span><br><span class="line">            <span class="keyword">if</span> (strstr(vsrc, attribName[j]))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//attribute个数</span></span><br><span class="line">                attrib[attribCt] = j;</span><br><span class="line">                <span class="comment">//使用的attribute的名称</span></span><br><span class="line">                attribUsed[attribCt++] = attribName[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//利用shaderUtil.c封装好的方法对programe 进行创建、链接、生成Programe</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         参数1：vsrc,顶点着色器程序</span></span><br><span class="line"><span class="comment">         参数2：fsrc,片元着色器程序</span></span><br><span class="line"><span class="comment">         参数3：attribute变量个数</span></span><br><span class="line"><span class="comment">         参数4：attribute变量名称</span></span><br><span class="line"><span class="comment">         参数5：当前attribute位置</span></span><br><span class="line"><span class="comment">         参数6：uniform名字</span></span><br><span class="line"><span class="comment">         参数7：program的uniform地址</span></span><br><span class="line"><span class="comment">         参数8：program程序地址 </span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        glueCreateProgram(vsrc, fsrc,</span><br><span class="line">                          attribCt, (<span class="keyword">const</span> GLchar **)&amp;attribUsed[<span class="number">0</span>], attrib,</span><br><span class="line">                          NUM_UNIFORMS, &amp;uniformName[<span class="number">0</span>], program[i].uniform,</span><br><span class="line">                          &amp;program[i].id);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//释放vsrc,fsrc指针</span></span><br><span class="line">        free(vsrc);</span><br><span class="line">        free(fsrc);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置常数、初始化Uniform</span></span><br><span class="line">        <span class="comment">//当前的i == 0</span></span><br><span class="line">        <span class="keyword">if</span> (i == PROGRAM_POINT)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//使用proram program[0].id 等价，以往课程例子中的GLuint program;</span></span><br><span class="line">            glUseProgram(program[PROGRAM_POINT].id);</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            <span class="comment">//为当前程序对象指定uniform变量值</span></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             为当前程序对象指定uniform变量MVP赋值</span></span><br><span class="line"><span class="comment">             </span></span><br><span class="line"><span class="comment">             void glUniform1f(GLint location,  GLfloat v0);</span></span><br><span class="line"><span class="comment">             参数1:location，指明要更改的uniform变量的位置 MVP</span></span><br><span class="line"><span class="comment">             参数2：v0,指明在指定的uniform变量中要使用的新值</span></span><br><span class="line"><span class="comment">             </span></span><br><span class="line"><span class="comment">             program[0].uniform[3] = 0</span></span><br><span class="line"><span class="comment">             等价于，vsh顶点着色器程序中的uniform变量，MVP = 0;</span></span><br><span class="line"><span class="comment">             其实简单理解就是做了一次初始化，清空这个mat4矩阵</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            glUniform1i(program[PROGRAM_POINT].uniform[UNIFORM_TEXTURE], <span class="number">0</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 投影矩阵</span></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             投影分为正射投影和透视投影，我们可以通过它来设置投影矩阵来设置视域，在OpenGL中，默认的投影矩阵是一个立方体，即x y z 分别是-1.0~1.0的距离，如果超出该区域，将不会被显示</span></span><br><span class="line"><span class="comment">             </span></span><br><span class="line"><span class="comment">             正射投影(orthographic projection)：GLKMatrix4MakeOrtho(float left, float righ, float bottom, float top, float nearZ, float farZ)，该函数返回一个正射投影的矩阵，它定义了一个由 left、right、bottom、top、near、far 所界定的一个矩形视域。此时，视点与每个位置之间的距离对于投影将毫无影响。</span></span><br><span class="line"><span class="comment">             </span></span><br><span class="line"><span class="comment">             透视投影(perspective projection)：GLKMatrix4MakeFrustum(float left, float right,float bottom, float top, float nearZ, float farZ)，该函数返回一个透视投影的矩阵，它定义了一个由 left、right、bottom、top、near、far 所界定的一个平截头体(椎体切去顶端之后的形状)视域。此时，视点与每个位置之间的距离越远，对象越小。</span></span><br><span class="line"><span class="comment">             </span></span><br><span class="line"><span class="comment">             在平面上绘制，只需要使正投影就可以了！！</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            GLKMatrix4 projectionMatrix = GLKMatrix4MakeOrtho(<span class="number">0</span>, backingWidth, <span class="number">0</span>, backingHeight, <span class="number">-1</span>, <span class="number">1</span>);</span><br><span class="line">           </span><br><span class="line">            <span class="comment">//模型矩阵，比如你要平移、旋转、缩放，就可以设置在模型矩阵上</span></span><br><span class="line">            <span class="comment">//这里不需要这些变换，则使用单元矩阵即可，相当于1 * ？ = ？</span></span><br><span class="line">            GLKMatrix4 modelViewMatrix = GLKMatrix4Identity;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//矩阵相乘，就2个矩阵的结果交给MVPMatrix</span></span><br><span class="line">            GLKMatrix4 MVPMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix);</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">              void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);</span></span><br><span class="line"><span class="comment">             功能：为当前程序对象指定uniform变量值</span></span><br><span class="line"><span class="comment">             参数1：location 指明要更改的uniform变量的位置 MVP</span></span><br><span class="line"><span class="comment">             参数2：count 指定将要被修改的矩阵的数量</span></span><br><span class="line"><span class="comment">             参数3：transpose 矩阵的值被载入变量时，是否要对矩阵进行变换，比如转置！</span></span><br><span class="line"><span class="comment">             参数4：value ，指向将要用于更新uniform变量MVP的数组指针</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            glUniformMatrix4fv(program[PROGRAM_POINT].uniform[UNIFORM_MVP], <span class="number">1</span>, GL_FALSE, MVPMatrix.m);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//点的大小 pointSize</span></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">              为当前程序对象指定uniform变量pointSize赋值</span></span><br><span class="line"><span class="comment">               program[0].uniform[pointSize] = 纹理宽度/画笔比例</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">             glUniform1f(program[PROGRAM_POINT].uniform[UNIFORM_POINT_SIZE], brushTexture.width / kBrushScale);</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            <span class="comment">//笔刷颜色</span></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             为当前程序对象指定uniform变量vertexColor赋值</span></span><br><span class="line"><span class="comment">             program[0].uniform[vertexColor] = 画笔颜色</span></span><br><span class="line"><span class="comment">             </span></span><br><span class="line"><span class="comment">             void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);</span></span><br><span class="line"><span class="comment">             功能：为当前程序对象指定uniform变量值</span></span><br><span class="line"><span class="comment">             参数1：location 指明要更改的uniform变量的位置 vertexColor</span></span><br><span class="line"><span class="comment">             参数2：count 指定将要被修改的4分量的数量</span></span><br><span class="line"><span class="comment">             参数3：value ，指向将要用于更新uniform变量vertexColor的值</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            glUniform4fv(program[PROGRAM_POINT].uniform[UNIFORM_VERTEX_COLOR], <span class="number">1</span>, brushColor);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    glError();</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="加载画笔纹理"><a href="#加载画笔纹理" class="headerlink" title="加载画笔纹理"></a>加载画笔纹理</h6><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个纹理图片</span></span><br><span class="line">- (textureInfo_t)textureFromName:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGImageRef</span> brushImage;</span><br><span class="line">    <span class="built_in">CGContextRef</span> brushContext;</span><br><span class="line">    GLubyte *brushData;</span><br><span class="line">    size_t width,height;</span><br><span class="line">    GLuint texId;</span><br><span class="line">    textureInfo_t texture;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//首先建立在图像文件的数据一个UIImage对象，然后提取核心图形图像</span></span><br><span class="line">    brushImage = [<span class="built_in">UIImage</span> imageNamed:name].CGImage;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取图片的宽和高</span></span><br><span class="line">    width = <span class="built_in">CGImageGetWidth</span>(brushImage);</span><br><span class="line">    height = <span class="built_in">CGImageGetHeight</span>(brushImage);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//分配位图上下文所需的内存</span></span><br><span class="line">    brushData = (GLubyte *)calloc(width * height * <span class="number">4</span>, <span class="keyword">sizeof</span>(GLubyte));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//使用Core Graphics框架提供的bitmatp创造功能。</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     CGContextRef CGBitmapContextCreate(</span></span><br><span class="line"><span class="comment">     void * data,</span></span><br><span class="line"><span class="comment">     size_t width,</span></span><br><span class="line"><span class="comment">     size_t height,</span></span><br><span class="line"><span class="comment">     size_t bitsPerComponent,</span></span><br><span class="line"><span class="comment">     size_t bytesPerRow,</span></span><br><span class="line"><span class="comment">     CGColorSpaceRef cg_nullable space,</span></span><br><span class="line"><span class="comment">     uint32_t bitmapInfo);</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     Quartz创建一个位图绘制环境，也就是位图上下文。</span></span><br><span class="line"><span class="comment">     参数1：data,要渲染的绘制内容的地址</span></span><br><span class="line"><span class="comment">     参数2：位图的宽</span></span><br><span class="line"><span class="comment">     参数3：位图的高</span></span><br><span class="line"><span class="comment">     参数4：内存中像素的每个组件的位数，比如32位像素格式和RGB颜色空间。一般设置为8</span></span><br><span class="line"><span class="comment">     参数5：位图每一行占有比特数</span></span><br><span class="line"><span class="comment">     参数5：颜色空间，通过CGImageGetColorSpace(图片）获取颜色空间</span></span><br><span class="line"><span class="comment">     参数6：颜色通道，RGBA = kCGImageAlphaPremultipliedLast</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    brushContext = <span class="built_in">CGBitmapContextCreate</span>(brushData, width, height, <span class="number">8</span>, width * <span class="number">4</span>, <span class="built_in">CGImageGetColorSpace</span>(brushImage), kCGImageAlphaPremultipliedLast);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建完context之后，可以在context上绘制图片</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     void CGContextDrawImage(CGContextRef c, CGRect rect,</span></span><br><span class="line"><span class="comment">     CGImageRef image);</span></span><br><span class="line"><span class="comment">     参数1：位图上下文</span></span><br><span class="line"><span class="comment">     参数2：绘制的frame</span></span><br><span class="line"><span class="comment">     参数3：绘制的图片</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">CGContextDrawImage</span>(brushContext, <span class="built_in">CGRectMake</span>(<span class="number">0.0</span>, <span class="number">0.0</span>f, (<span class="built_in">CGFloat</span>)width, (<span class="built_in">CGFloat</span>)height), brushImage);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接下来将不需要上下文，因此需要释放它以避免内存泄漏</span></span><br><span class="line">    <span class="built_in">CGContextRelease</span>(brushContext);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//使用OpenGL ES生成纹理</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     生成纹理的函数</span></span><br><span class="line"><span class="comment">     glGenTextures (GLsizei n, GLuint* textures)</span></span><br><span class="line"><span class="comment">     参数1：n,生成纹理个数</span></span><br><span class="line"><span class="comment">     参数2：存储纹理索引的第一个元素指针</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    glGenTextures(<span class="number">1</span>, &amp;texId);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//绑定纹理名称 允许建立一个绑定到目标纹理的有名称的纹理。</span></span><br><span class="line">    glBindTexture(GL_TEXTURE_2D, texId);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置纹理参数使用缩小滤波器和线性滤波器（加权平均）--设置纹理属性</span></span><br><span class="line">    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//指定2D纹理图像，为内存中的图像数据提供一个指针。</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     功能：生成2D纹理</span></span><br><span class="line"><span class="comment">     glTexImage2D (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* pixels)；</span></span><br><span class="line"><span class="comment">     参数1：target,纹理目标，因为你使用的是glTexImage2D函数，所以必须设置为GL_TEXTURE_2D</span></span><br><span class="line"><span class="comment">     参数2：level,0，基本图像级别</span></span><br><span class="line"><span class="comment">     参数3：internalformat，颜色组件；GL_RGBA，GL_ALPHA，GL_RGBA</span></span><br><span class="line"><span class="comment">     参数4：width,纹理图像的宽度</span></span><br><span class="line"><span class="comment">     参数5：height,纹理图像的高度</span></span><br><span class="line"><span class="comment">     参数6：border,纹理边框的宽度,必须为0</span></span><br><span class="line"><span class="comment">     参数7：format,像素数据的颜色格式，可不与internalformat一致，可参考internalformat的值</span></span><br><span class="line"><span class="comment">     参数8：type,像素数据类型，GL_UNSIGNED_BYTE</span></span><br><span class="line"><span class="comment">     参数9：pixels，内存中指向图像数据的指针</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    glTexImage2D(GL_TEXTURE_2D, <span class="number">0</span>, GL_RGBA, (<span class="keyword">int</span>)width, (<span class="keyword">int</span>)height, <span class="number">0</span>, GL_RGBA, GL_UNSIGNED_BYTE, brushData);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//生成纹理之后，即可释放brushData数据</span></span><br><span class="line">    free(brushData);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//补充自己定义的texture结构体中的内容</span></span><br><span class="line">    <span class="comment">//纹理</span></span><br><span class="line">    texture.id = texId;</span><br><span class="line">    <span class="comment">//纹理宽度</span></span><br><span class="line">    texture.width = (<span class="keyword">int</span>)width;</span><br><span class="line">    <span class="comment">//纹理高度</span></span><br><span class="line">    texture.height = (<span class="keyword">int</span>)height;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">//返回纹理对象数据</span></span><br><span class="line">    <span class="keyword">return</span> texture;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="绘制已存储顶点数据的”加油”"><a href="#绘制已存储顶点数据的”加油”" class="headerlink" title="绘制已存储顶点数据的”加油”"></a>绘制已存储顶点数据的”加油”</h6><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)paint</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//从0开始遍历顶点，步长为2</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        为什么步长等于2?</span></span><br><span class="line"><span class="comment">        p1,p2,开始点，结束点！</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; CCArr.count - <span class="number">1</span>; i+= <span class="number">2</span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//从CCArr数组中读取顶点 cp1,cp2</span></span><br><span class="line">        CCPoint *cp1 = CCArr[i];</span><br><span class="line">        CCPoint *cp2 = CCArr[i + <span class="number">1</span>];</span><br><span class="line">       </span><br><span class="line">        <span class="comment">//将CCPoint对象 -&gt; CGPoint对象</span></span><br><span class="line">        <span class="built_in">CGPoint</span> p1,p2;</span><br><span class="line">        p1.x = cp1.mX.floatValue;</span><br><span class="line">        p2.x = cp2.mX.floatValue;</span><br><span class="line">        </span><br><span class="line">        p1.y = cp1.mY.floatValue;</span><br><span class="line">        p2.y = cp2.mY.floatValue;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//在用户触摸的地方绘制屏幕上的线条</span></span><br><span class="line">        [<span class="keyword">self</span> renderLineFromPoint:p1 toPoint:p2];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="在两点之间绘制线条"><a href="#在两点之间绘制线条" class="headerlink" title="在两点之间绘制线条"></a>在两点之间绘制线条</h6><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在用户触摸的地方绘制屏幕上的线条</span></span><br><span class="line">-(<span class="keyword">void</span>)renderLineFromPoint:(<span class="built_in">CGPoint</span>)start toPoint:(<span class="built_in">CGPoint</span>)end</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//顶点缓存区</span></span><br><span class="line">    <span class="keyword">static</span> GLfloat *vertexBuffer = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//顶点Max(暂时)</span></span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">NSUInteger</span> vertexMax = <span class="number">64</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//顶点个数</span></span><br><span class="line">    <span class="built_in">NSUInteger</span> vertexCount = <span class="number">0</span>,count;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//从点到像素转换</span></span><br><span class="line">    <span class="comment">//视图的比例因子</span></span><br><span class="line">    <span class="built_in">CGFloat</span> scale = <span class="keyword">self</span>.contentScaleFactor;</span><br><span class="line">    <span class="comment">//将每个顶点与scale 因子相乘</span></span><br><span class="line">    start.x *= scale;</span><br><span class="line">    start.y *= scale;</span><br><span class="line">    </span><br><span class="line">    end.x *= scale;</span><br><span class="line">    end.y *= scale;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//开辟数组缓存区</span></span><br><span class="line">    <span class="keyword">if</span> (vertexBuffer == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">//开辟顶点地址空间</span></span><br><span class="line">        vertexBuffer = malloc(vertexMax * <span class="number">2</span> * <span class="keyword">sizeof</span>(GLfloat));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     通过把起点到终点的轨迹分解成若干个点，分别来绘制每个点，从而达到线的效果</span></span><br><span class="line"><span class="comment">     ceilf（）向上取整。不是四舍五入，而是判断后面有小数，去掉小数部分，整数部分加1.</span></span><br><span class="line"><span class="comment">     如：123.456 =&gt; 124</span></span><br><span class="line"><span class="comment">        123.001 =&gt; 124</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//向缓冲区添加点，所以每个像素都有绘图点</span></span><br><span class="line">    <span class="comment">//求得start 和 end 2点间的距离</span></span><br><span class="line">    <span class="keyword">float</span> seq = sqrtf((end.x - start.x) * (end.x - start.x) + (end.y - start.y) * (end.y - start.y));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     向上取整，求得距离要产生多少个点？ </span></span><br><span class="line"><span class="comment">     kBrushPixelStep,画笔像素步长</span></span><br><span class="line"><span class="comment">     修改kBrushPixelStep 的值，越大，笔触越细；越小，笔触越粗！</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">NSInteger</span> pointCount = ceilf(seq / kBrushPixelStep);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//比较pointCount 是不是大于1，如果小于1,则count = 1,否则count = pointCount;</span></span><br><span class="line">    count = MAX(pointCount, <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//NSLog(@"Count = %ld",count);</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//判断如果顶点数 &gt; 设置顶点Max</span></span><br><span class="line">        <span class="keyword">if</span> (vertexCount == vertexMax) &#123;</span><br><span class="line">           </span><br><span class="line">            <span class="comment">//修改vertexMax 2倍增长</span></span><br><span class="line">            vertexMax = <span class="number">2</span> *vertexMax;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//增加空间开辟</span></span><br><span class="line">            vertexBuffer = realloc(vertexBuffer, vertexMax * <span class="number">2</span> *<span class="keyword">sizeof</span>(GLfloat));</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//修改vertexBuffer数组的值</span></span><br><span class="line">        <span class="comment">//将start 和 end 距离之间，计算出count个点，并存储在vertexBuffer数组中</span></span><br><span class="line">        <span class="comment">//x = start.x + (end.x - start.x) * (i/count);</span></span><br><span class="line">        <span class="comment">//y = start.y + (end.y - start.y) * (i/count);</span></span><br><span class="line">        <span class="comment">//vertexBuffer[0]-&gt;x</span></span><br><span class="line">        vertexBuffer[<span class="number">2</span> * vertexCount + <span class="number">0</span>] = start.x + (end.x - start.x) * ((GLfloat)i/(GLfloat)count);</span><br><span class="line">        <span class="comment">//vertextBuffer[1]-&gt;y</span></span><br><span class="line">        vertexBuffer[<span class="number">2</span> * vertexCount + <span class="number">1</span>] = start.y + (end.y - start.y) * ((GLfloat)i/(GLfloat)count);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        NSLog(@"X:%f",vertexBuffer[2 * vertexCount]);</span></span><br><span class="line"><span class="comment">        NSLog(@"Y:%f",vertexBuffer[2 * vertexCount + 1]);</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//vertexCount 自增1</span></span><br><span class="line">        vertexCount += <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//加载数据到vertex Buffer对象中</span></span><br><span class="line">    glBindBuffer(GL_ARRAY_BUFFER, vboId);</span><br><span class="line">    <span class="comment">//将cpu存储的顶点数据-&gt;GPU中 复制顶点数组到缓冲中提供给OpenGL使用</span></span><br><span class="line">    glBufferData(GL_ARRAY_BUFFER, vertexCount * <span class="number">2</span> * <span class="keyword">sizeof</span>(GLfloat), vertexBuffer, GL_DYNAMIC_DRAW);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     链接顶点属性</span></span><br><span class="line"><span class="comment">     glEnableVertexAttribArray启用指定属性，才可在顶点着色器中访问逐顶点的属性数据</span></span><br><span class="line"><span class="comment">     参考课件：二、链接顶点属性</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    glEnableVertexAttribArray(ATTRIB_VERTEX);</span><br><span class="line">    </span><br><span class="line">    glVertexAttribPointer(ATTRIB_VERTEX, <span class="number">2</span>, GL_FLOAT, GL_FALSE, <span class="number">2</span>*<span class="keyword">sizeof</span>(GLfloat), <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//绘制</span></span><br><span class="line">    <span class="comment">//使用刚刚创建的program[0].id的program</span></span><br><span class="line">    glUseProgram(program[PROGRAM_POINT].id);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     根据顶点绘制图形，</span></span><br><span class="line"><span class="comment">     参数1：绘制模型 连接线段，参考视觉班第一节课的课件</span></span><br><span class="line"><span class="comment">     参数2：起始点，0</span></span><br><span class="line"><span class="comment">     参数3：顶点个数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    glDrawArrays(GL_POINTS, <span class="number">0</span>, (<span class="keyword">int</span>)vertexCount);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//显示buffer</span></span><br><span class="line">    glBindRenderbuffer(GL_RENDERBUFFER, viewRenderBuffer);</span><br><span class="line">    [context presentRenderbuffer:GL_RENDERBUFFER];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="已经进行过初始化"><a href="#已经进行过初始化" class="headerlink" title="已经进行过初始化"></a>已经进行过初始化</h4><p>调整图层<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调整图层</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)resizeFromLayer:(<span class="built_in">CAEAGLLayer</span> *)layer</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//根据当前图层大小分配颜色缓冲区</span></span><br><span class="line">    glBindRenderbuffer(GL_RENDERBUFFER, viewRenderBuffer);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//绑定一个Drawable对象存储到一个OpenGL ES渲染缓存对象。</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     创建一个渲染，可以呈现到屏幕上，你将渲染然后分配共享存储通过调用此方法。这个方法的调用替换通常给glrenderbufferstorage。缓存的存储分配了这个方法以后可以显示一个回调presentrenderbuffer：</span></span><br><span class="line"><span class="comment">     - (BOOL)renderbufferStorage:(NSUInteger)target fromDrawable:(id&lt;EAGLDrawable&gt;)drawable;</span></span><br><span class="line"><span class="comment">     为绘制缓冲区分配存储区，此处将CAEAGLLayer的绘制存储区作为绘制缓冲区的存储区</span></span><br><span class="line"><span class="comment">     参数1：OpenGL ES的结合点为当前绑定的渲染。这个参数的值必须gl_renderbuffer（或gl_renderbuffer_oes在OpenGL ES 1.1语境）</span></span><br><span class="line"><span class="comment">     参数2：对象管理数据存储区中的渲染。在iOS中，这个参数的值必须是一个CAEAGLLayer对象</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    [context renderbufferStorage:GL_RENDERBUFFER fromDrawable:layer];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">////获取绘制缓存区的像素宽度 --将绘制缓存区像素宽度存储在backingWidth</span></span><br><span class="line">    glGetRenderbufferParameteriv(GL_RENDERBUFFER,GL_RENDERBUFFER_WIDTH, &amp;backingWidth);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">////获取绘制缓存区的像素高度--将绘制缓存区像素高度存储在backingHeight</span></span><br><span class="line">    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &amp;backingHeight);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//检查GL_FRAMEBUFFER缓存区状态</span></span><br><span class="line">    <span class="keyword">if</span> (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Make compelete framebuffer object failed!%x"</span>,glCheckFramebufferStatus(GL_FRAMEBUFFER));</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//更新投影矩阵、模型视图矩阵</span></span><br><span class="line">    <span class="comment">// 投影矩阵</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     投影分为正射投影和透视投影，我们可以通过它来设置投影矩阵来设置视域，在OpenGL中，默认的投影矩阵是一个立方体，即x y z 分别是-1.0~1.0的距离，如果超出该区域，将不会被显示</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     正射投影(orthographic projection)：GLKMatrix4MakeOrtho(float left, float righ, float bottom, float top, float nearZ, float farZ)，该函数返回一个正射投影的矩阵，它定义了一个由 left、right、bottom、top、near、far 所界定的一个矩形视域。此时，视点与每个位置之间的距离对于投影将毫无影响。</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     透视投影(perspective projection)：GLKMatrix4MakeFrustum(float left, float right,float bottom, float top, float nearZ, float farZ)，该函数返回一个透视投影的矩阵，它定义了一个由 left、right、bottom、top、near、far 所界定的一个平截头体(椎体切去顶端之后的形状)视域。此时，视点与每个位置之间的距离越远，对象越小。</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">     在平面上绘制，只需要使正投影就可以了！！</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    GLKMatrix4 projectionMatrix = GLKMatrix4MakeOrtho(<span class="number">0</span>, backingWidth, <span class="number">0</span>, backingHeight, <span class="number">-1</span>, <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// //模型矩阵，比如你要平移、旋转、缩放，就可以设置在模型矩阵上</span></span><br><span class="line">    <span class="comment">//这里不需要这些变换，则使用单元矩阵即可，相当于1 * ？ = ？</span></span><br><span class="line">    GLKMatrix4 modelViewMatrix = GLKMatrix4Identity;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//矩阵相乘，就2个矩阵的结果交给MVPMatrix</span></span><br><span class="line">    GLKMatrix4 MVPMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);</span></span><br><span class="line"><span class="comment">     功能：为当前程序对象指定uniform变量值</span></span><br><span class="line"><span class="comment">     参数1：location 指明要更改的uniform变量的位置 MVP</span></span><br><span class="line"><span class="comment">     参数2：count 指定将要被修改的矩阵的数量</span></span><br><span class="line"><span class="comment">     参数3：transpose 矩阵的值被载入变量时，是否要对矩阵进行变换，比如转置！</span></span><br><span class="line"><span class="comment">     参数4：value ，指向将要用于更新uniform变量MVP的数组指针</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    glUniformMatrix4fv(program[PROGRAM_POINT].uniform[UNIFORM_MVP], <span class="number">1</span>, GL_FALSE, MVPMatrix.m);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//更新视口</span></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, backingWidth, backingHeight);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改画笔颜色"><a href="#修改画笔颜色" class="headerlink" title="修改画笔颜色"></a>修改画笔颜色</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setBrushColorWithRed:(<span class="built_in">CGFloat</span>)red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue</span><br><span class="line">&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//更新画笔颜色 颜色 * 透明度</span></span><br><span class="line">    brushColor[<span class="number">0</span>] = red * kBrushOpacity;</span><br><span class="line">    brushColor[<span class="number">1</span>] = green * kBrushOpacity;</span><br><span class="line">    brushColor[<span class="number">2</span>] = green * kBrushOpacity;</span><br><span class="line">    brushColor[<span class="number">3</span>] = kBrushOpacity;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%f,%f,%f,%f"</span>,brushColor[<span class="number">0</span>],brushColor[<span class="number">1</span>],brushColor[<span class="number">2</span>],brushColor[<span class="number">3</span>]);</span><br><span class="line">     <span class="built_in">NSLog</span>(<span class="string">@"%f,%f,%f"</span>,red,green,blue);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//释放初始化</span></span><br><span class="line">    <span class="keyword">if</span> (initialized) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//使用program[0].id</span></span><br><span class="line">        glUseProgram(program[PROGRAM_POINT].id);</span><br><span class="line">        <span class="comment">//将颜色值brushColor 传递到 vertexColor中</span></span><br><span class="line">        glUniform4fv(program[PROGRAM_POINT].uniform[UNIFORM_VERTEX_COLOR], <span class="number">1</span>, brushColor);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="清理屏幕"><a href="#清理屏幕" class="headerlink" title="清理屏幕"></a>清理屏幕</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//清空屏幕</span></span><br><span class="line">-(<span class="keyword">void</span>)erase</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//clear frameBuffer</span></span><br><span class="line">    glBindFramebuffer(GL_FRAMEBUFFER, viewFrameBuffer);</span><br><span class="line">    glClearColor(<span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="number">1.0</span>f);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//显示缓存区</span></span><br><span class="line">    glBindRenderbuffer(GL_RENDERBUFFER, viewRenderBuffer);</span><br><span class="line">    [context presentRenderbuffer:GL_RENDERBUFFER];</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="开始绘制"><a href="#开始绘制" class="headerlink" title="开始绘制"></a>开始绘制</h2><p>绘制任意图形,线条<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark -- Touch Click</span></span><br><span class="line"><span class="comment">//点击屏幕开始</span></span><br><span class="line">-(<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取绘制的bounds</span></span><br><span class="line">    <span class="built_in">CGRect</span>				bounds = [<span class="keyword">self</span> bounds];</span><br><span class="line">    <span class="comment">//获取当前的点击touch</span></span><br><span class="line">    <span class="built_in">UITouch</span>*            touch = [[event touchesForView:<span class="keyword">self</span>] anyObject];</span><br><span class="line">    <span class="comment">//设置为firstTouch -&gt; yes</span></span><br><span class="line">    firstTouch = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取当前点击的位置信息，x,y</span></span><br><span class="line">    _location = [touch locationInView:<span class="keyword">self</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//y = height - y</span></span><br><span class="line">    _location.y = bounds.size.height - _location.y;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)touchesMoved:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGRect</span> bounds =  [<span class="keyword">self</span> bounds];</span><br><span class="line">    <span class="built_in">UITouch</span> *touch = [[event touchesForView:<span class="keyword">self</span>]anyObject];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//第一次点击</span></span><br><span class="line">    <span class="keyword">if</span> (firstTouch) &#123;</span><br><span class="line">        <span class="comment">//将firstTouch状态改为NO</span></span><br><span class="line">        firstTouch = <span class="literal">NO</span>;</span><br><span class="line">        <span class="comment">//_previousLocation = 获取上一个顶点</span></span><br><span class="line">        _previousLocation = [touch previousLocationInView:<span class="keyword">self</span>];</span><br><span class="line">        _previousLocation.y = bounds.size.height - _previousLocation.y;</span><br><span class="line">    </span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        _location = [touch locationInView:<span class="keyword">self</span>];</span><br><span class="line">        _location.y = bounds.size.height - _location.y;</span><br><span class="line">        _previousLocation = [touch previousLocationInView:<span class="keyword">self</span>];</span><br><span class="line">        _previousLocation.y = bounds.size.height - _previousLocation.y;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取_previousLocation 和 _location 2个顶点，绘制成线条</span></span><br><span class="line">    [<span class="keyword">self</span> renderLineFromPoint:_previousLocation toPoint:_location];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)touchesEnded:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">CGRect</span> bounds = [<span class="keyword">self</span> bounds];</span><br><span class="line">    <span class="built_in">UITouch</span> *touch = [[event touchesForView:<span class="keyword">self</span>]anyObject];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断是否为第一次触碰</span></span><br><span class="line">    <span class="keyword">if</span> (firstTouch) &#123;</span><br><span class="line">        firstTouch = <span class="literal">NO</span>;</span><br><span class="line">        _previousLocation = [touch previousLocationInView:<span class="keyword">self</span>];</span><br><span class="line">        _previousLocation.y = bounds.size.height - _previousLocation.y;</span><br><span class="line">        [<span class="keyword">self</span> renderLineFromPoint:_previousLocation toPoint:_location];</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)touchesCancelled:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Touch Cancelled"</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="built_in">BOOL</span>)canBecomeFirstResponder</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><h6 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h6><p><img src="https://upload-images.jianshu.io/upload_images/1352344-08cefc9863d20493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h6 id="自行随意绘制"><a href="#自行随意绘制" class="headerlink" title="自行随意绘制"></a>自行随意绘制</h6><p><img src="https://upload-images.jianshu.io/upload_images/1352344-ff5457490aeac85a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你赏我糖果吃</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.jpg" alt="Sober 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Sober 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/opengles/" rel="tag"><i class="fa fa-tag"></i> opengles</a>
+          
+            <a href="/tags/glsl/" rel="tag"><i class="fa fa-tag"></i> glsl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/11/GLSL语言基础/" rel="next" title="GLSL语言基础">
+                <i class="fa fa-chevron-left"></i> GLSL语言基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sober.png" alt="Sober">
+            
+              <p class="site-author-name" itemprop="name">Sober</p>
+              <p class="site-description motion-element" itemprop="description">GET SOBER. STAY SOBER.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/soober" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:jytiann@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2938187707" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/fb92567f10ab" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-bookmark"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思维导图"><span class="nav-number">1.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化View"><span class="nav-number">2.</span> <span class="nav-text">初始化View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layoutSubviews"><span class="nav-number">3.</span> <span class="nav-text">layoutSubviews</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#若没有进行过初始化"><span class="nav-number">3.0.1.</span> <span class="nav-text">若没有进行过初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#initGL"><span class="nav-number">3.0.1.0.1.</span> <span class="nav-text">initGL</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#手写着色程序-vsh-amp-fsh"><span class="nav-number">3.0.1.0.2.</span> <span class="nav-text">手写着色程序 vsh&amp;fsh</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#加载shader"><span class="nav-number">3.0.1.0.3.</span> <span class="nav-text">加载shader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#加载画笔纹理"><span class="nav-number">3.0.1.0.4.</span> <span class="nav-text">加载画笔纹理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#绘制已存储顶点数据的”加油”"><span class="nav-number">3.0.1.0.5.</span> <span class="nav-text">绘制已存储顶点数据的”加油”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在两点之间绘制线条"><span class="nav-number">3.0.1.0.6.</span> <span class="nav-text">在两点之间绘制线条</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已经进行过初始化"><span class="nav-number">3.0.2.</span> <span class="nav-text">已经进行过初始化</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#修改画笔颜色"><span class="nav-number">4.</span> <span class="nav-text">修改画笔颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清理屏幕"><span class="nav-number">5.</span> <span class="nav-text">清理屏幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始绘制"><span class="nav-number">6.</span> <span class="nav-text">开始绘制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">7.</span> <span class="nav-text">效果</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#初始化"><span class="nav-number">7.0.0.0.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自行随意绘制"><span class="nav-number">7.0.0.0.2.</span> <span class="nav-text">自行随意绘制</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sober</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+-->
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共26k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'B7ExmbYhWKYhOXCtpilANq1g-gzGzoHsz',
+        appKey: '75tlk8PXSBIPbmuF4ia266yY',
+        placeholder: 'Just go go',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("B7ExmbYhWKYhOXCtpilANq1g-gzGzoHsz", "75tlk8PXSBIPbmuF4ia266yY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":120,"height":240},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+</html>
